@@ -1,4 +1,4 @@
-﻿using CurrentWeather.Services;
+﻿
 using CurrentWeather.Views;
 using System;
 using Xamarin.Forms;
@@ -12,8 +12,6 @@ namespace CurrentWeather
         public App()
         {
             InitializeComponent();
-
-            DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
         }
 

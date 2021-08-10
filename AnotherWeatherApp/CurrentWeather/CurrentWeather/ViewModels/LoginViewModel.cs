@@ -1,24 +1,26 @@
 ﻿using CurrentWeather.Views;
+using CurrentWeather.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 using Xamarin.Forms;
 
 namespace CurrentWeather.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        public Command LoginCommand { get; }
-
+        public TimeModel TimeModel { get; set; }
+        CultureInfo CultureInfo = new CultureInfo("da-DK");
         public LoginViewModel()
         {
-            LoginCommand = new Command(OnLoginClicked);
-        }
-
-        private async void OnLoginClicked(object obj)
-        {
-            // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+            TimeModel = new TimeModel()
+            {
+                ThisDay = DateTime.Now,
+                MinDay = DateTime.Now.AddDays(-1),
+                MaxDay = DateTime.Now.AddDays(6),
+                ThisDayConverted = DateTime.Now.ToString("dd. MMMM yyyy", CultureInfo)
+            };
         }
     }
 }
