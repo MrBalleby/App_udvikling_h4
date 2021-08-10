@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace WeatherDataAccess.Data
 {
-    class HTTPACCESS
+    public class HTTPACCESS
     {
+        private static string _baseUrl = @"https://api.met.no/weatherapi/locationforecast/2.0/";
+
+        
     }
 }
