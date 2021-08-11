@@ -4,14 +4,14 @@
              x:Class="CurrentWeather.Views.DailyWeatherSummaryView">
   <ContentView.Content>
       <StackLayout>
-            <ListView x:Name="DateWeatherSummaryView" VerticalOptions="FillAndExpand" HeightRequest="250" SeparatorVisibility="None">
+            <ListView x:Name="DateWeatherSummaryView" SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Spacing="60">
-                                <Label Text="{Binding Date, StringFormat='{0:MMM, dd}'}"/>
-                                <Label Text="{Binding IconName}"/>
-                                <Label Text="{Binding AirTemperature}"/>
+                                <Label FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold" Text="{Binding Date, StringFormat='{0:MMM, dd}'}"/>
+                                <Label FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold" Text="{Binding IconName}"/>
+                                <Label FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold" Text="{Binding AirTemperature}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
