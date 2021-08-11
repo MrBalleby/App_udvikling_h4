@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CurrentWeather.Views.DailyWeatherSummaryView">
+  <ContentView.Content>
+      <StackLayout>
+            <ListView x:Name="DateWeatherSummaryView" VerticalOptions="FillAndExpand" HeightRequest="250" SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Spacing="60">
+                                <Label Text="{Binding Date, StringFormat='{0:MMM, dd}'}"/>
+                                <Label Text="{Binding IconName}"/>
+                                <Label Text="{Binding AirTemperature}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

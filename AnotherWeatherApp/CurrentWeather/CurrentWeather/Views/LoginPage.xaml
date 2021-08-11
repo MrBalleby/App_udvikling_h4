@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodels="clr-namespace:CurrentWeather.ViewModels" x:DataType="viewmodels:LoginViewModel"
+             xmlns:views="clr-namespace:CurrentWeather.Views"
              mc:Ignorable="d"
              x:Class="CurrentWeather.Views.LoginPage"
              x:Name="HomePage"
@@ -12,6 +13,7 @@
             <AbsoluteLayout x:Name="ViewControls" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="#66000000" Margin="1,1,1,1">
                 <Grid BackgroundColor="White" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,1,1,1">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
@@ -39,7 +41,8 @@
                             <SearchBar Grid.ColumnSpan="2" HorizontalOptions="Center" ></SearchBar>
                         </StackLayout>
                     </Frame>
-                    <Frame BackgroundColor="Transparent" VerticalOptions="End" Grid.Column="0" Grid.Row="3">
+                    <views:DailyWeatherSummaryView BackgroundColor="Transparent" VerticalOptions="End" Grid.Row="3"/>
+                    <Frame BackgroundColor="Transparent" VerticalOptions="End" Grid.Column="0" Grid.Row="4">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="30*"></ColumnDefinition>
