@@ -5,55 +5,88 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodels="clr-namespace:CurrentWeather.ViewModels" x:DataType="viewmodels:LoginViewModel"
              mc:Ignorable="d"
              x:Class="CurrentWeather.Views.LoginPage"
+             x:Name="HomePage"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <Grid BackgroundColor="#48C7D9">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="3*"></RowDefinition>
-                <RowDefinition Height="14*"></RowDefinition>
-                <RowDefinition Height="14*"></RowDefinition>
-                <RowDefinition Height="5*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Frame BackgroundColor="#20FFFF" VerticalOptions="Start" Grid.Column="0" Grid.Row="0" CornerRadius="10" OutlineColor="Black" Padding="1" Margin="0,5,0,0" BorderColor="Black">
-                <StackLayout>
-                    <SearchBar Grid.ColumnSpan="2" HorizontalOptions="Center" ></SearchBar>
-                </StackLayout>
-            </Frame>
-            <Frame BackgroundColor="#20FFFF" VerticalOptions="Start" Grid.Column="0" Grid.Row="1" CornerRadius="10" OutlineColor="Black" Padding="10" BorderColor="Black">
-                <StackLayout>
-                    <Label Text="{Binding TimeModel.ThisDayConverted}" FontSize="Large"></Label>
-                    <Label Text="23" FontSize="Header"></Label>
-                    <Label Text="Regnvejr" FontSize="Medium"></Label>
-                    <Label Text="Vind | 110 km/h" FontSize="Medium"></Label>
-                    <Label Text="Fugtighed | 110%" FontSize="Medium"></Label>
-                </StackLayout>
-            </Frame>
-            
-            
-            
-            
-            <Frame BackgroundColor="#20FFFF" VerticalOptions="Start" Grid.Column="0" Grid.Row="2" CornerRadius="10" OutlineColor="Black" Padding="1" BorderColor="Black">
-                <StackLayout>
-                    <SearchBar Grid.ColumnSpan="2" HorizontalOptions="Center" ></SearchBar>
-                </StackLayout>
-            </Frame>
-            
-            
-            
-            
-            <Frame BackgroundColor="#48C7D9" VerticalOptions="End" Grid.Column="0" Grid.Row="3">
-                <Grid>
+        <AbsoluteLayout x:Name="ViewLayout">
+            <AbsoluteLayout x:Name="ViewControls" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="#66000000" Margin="1,1,1,1">
+                <Grid BackgroundColor="White" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,1,1,1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30*"></ColumnDefinition>
-                        <ColumnDefinition Width="70*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Button Text="Hjem" Grid.Column="0" BackgroundColor="#20FFFF" CornerRadius="20" TextColor="Black"></Button>
-                    <DatePicker TextColor="Black" Grid.Column="1" Date="{Binding TimeModel.ThisDay}" MinimumDate="{Binding TimeModel.MinDay}" MaximumDate="{Binding TimeModel.MaxDay}"></DatePicker>
+                    <Frame BackgroundColor="Transparent" VerticalOptions="Start" Grid.Column="0" Grid.Row="0" CornerRadius="10" OutlineColor="Black" Padding="1" Margin="0,5,0,0" BorderColor="Black">
+                        <StackLayout>
+                            <SearchBar Grid.ColumnSpan="2" HorizontalOptions="Center" ></SearchBar>
+                        </StackLayout>
+                    </Frame>
+                    <Frame BackgroundColor="Transparent" VerticalOptions="Start" Grid.Column="0" Grid.Row="1" CornerRadius="10" OutlineColor="Black" Padding="10" BorderColor="Black">
+                        <StackLayout>
+                            <Label Text="{Binding TimeModel.ThisDayConverted}" FontSize="Large"></Label>
+                            <Label Text="23" FontSize="Header"></Label>
+                            <Label Text="Regnvejr" FontSize="Medium"></Label>
+                            <Label Text="Vind | 110 km/h" FontSize="Medium"></Label>
+                            <Label Text="Fugtighed | 110%" FontSize="Medium"></Label>
+                        </StackLayout>
+                    </Frame>
+                    <Frame BackgroundColor="Transparent" VerticalOptions="Start" Grid.Column="0" Grid.Row="2" CornerRadius="10" OutlineColor="Black" Padding="1" BorderColor="Black">
+                        <StackLayout>
+                            <SearchBar Grid.ColumnSpan="2" HorizontalOptions="Center" ></SearchBar>
+                        </StackLayout>
+                    </Frame>
+                    <Frame BackgroundColor="Transparent" VerticalOptions="End" Grid.Column="0" Grid.Row="3">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"></ColumnDefinition>
+                                <ColumnDefinition Width="70*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Button Text="Hjem" Grid.Column="0" BackgroundColor="Transparent" CornerRadius="20" TextColor="Black" BorderColor="Black" BorderWidth="1"></Button>
+                            <Button  x:Name="datepicker" Text="Vælg Dag" Grid.Column="1" BackgroundColor="Transparent" CornerRadius="20" TextColor="Black" BorderColor="Black" BorderWidth="1" Clicked="OnButtonClicked"></Button>
+                        </Grid>
+                    </Frame>
                 </Grid>
-            </Frame>
-        </Grid>
+                <ContentView x:Name="overlay"  
+                 AbsoluteLayout.LayoutBounds="0, 0, 1, 1"  
+                 AbsoluteLayout.LayoutFlags="All"  
+                 IsVisible="False"  
+                 BackgroundColor="#C0808080"  
+                 Padding="10, 0">
+                    <StackLayout Orientation="Vertical"   
+                   BackgroundColor="White"   
+                   HorizontalOptions="Center"   
+                   VerticalOptions="Center"   
+                   Padding="10">
+
+                        <ListView x:Name="WeatherListView" ItemsSource="{Binding Dates}" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextCell Text="{Binding TimeModel.ThisDayConverted}" />
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+
+                            <Button Text="Afbryd" FontSize="Large"  
+                      VerticalOptions="CenterAndExpand"  
+                      HorizontalOptions="Center"  
+                      Clicked="OnCancelButtonClicked"/>
+
+                            <Button Text="Vælg Dag" FontSize="Large"  
+                        VerticalOptions="CenterAndExpand"  
+                        HorizontalOptions="Center"  
+                        Clicked="OnOkButtonClicked" />
+                        </StackLayout>
+
+                    </StackLayout>
+                </ContentView>
+            </AbsoluteLayout>
+        </AbsoluteLayout>
+
     </ContentPage.Content>
 </ContentPage>
