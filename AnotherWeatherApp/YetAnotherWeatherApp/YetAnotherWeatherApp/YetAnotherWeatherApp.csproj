@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -6,7 +6,44 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Rain01.jpg" />
+    <None Remove="Images\Rain02.jpg" />
+    <None Remove="Images\Skies01.jpg" />
+    <None Remove="Images\Snow01.jpg" />
+    <None Remove="Images\Snow02.jpg" />
+    <None Remove="Images\Snow03.jpg" />
+    <None Remove="Images\Snow04.jpg" />
+    <None Remove="Images\Spring1.jpg" />
+    <None Remove="Images\Spring2.jpg" />
+    <None Remove="Images\Spring3.jpg" />
+    <None Remove="Images\Spring4.jpg" />
+    <None Remove="Images\Thunder01.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Rain01.jpg" />
+    <EmbeddedResource Include="Images\Rain02.jpg" />
+    <EmbeddedResource Include="Images\Skies01.jpg" />
+    <EmbeddedResource Include="Images\Snow01.jpg" />
+    <EmbeddedResource Include="Images\Snow02.jpg" />
+    <EmbeddedResource Include="Images\Snow03.jpg" />
+    <EmbeddedResource Include="Images\Snow04.jpg" />
+    <EmbeddedResource Include="Images\Spring1.jpg" />
+    <EmbeddedResource Include="Images\Spring2.jpg" />
+    <EmbeddedResource Include="Images\Spring3.jpg" />
+    <EmbeddedResource Include="Images\Spring4.jpg" />
+    <EmbeddedResource Include="Images\Thunder01.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="4.0.10" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\HomeView.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>
