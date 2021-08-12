@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using CurrentWeather.Models;
+using YetAnotherWeatherApp.Models;
 using Xamarin.Essentials;
 
 namespace CurrentWeather.Services

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using YetAnotherWeatherApp.ViewModels;
 
-namespace CurrentWeather.Views
+namespace YetAnotherWeatherApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomeView : ContentPage
@@ -15,6 +16,7 @@ namespace CurrentWeather.Views
         public HomeView()
         {
             InitializeComponent();
+            this.BindingContext = new HomeViewModel();
         }
     }
 }
