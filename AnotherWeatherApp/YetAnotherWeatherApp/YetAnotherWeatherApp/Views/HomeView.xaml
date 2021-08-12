@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodels="clr-namespace:YetAnotherWeatherApp.ViewModels" x:DataType="viewmodels:LoginViewModel"
              xmlns:views="clr-namespace:CurrentWeather.Views"
              xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
-             xmlns:local="clr-namespace:CurrentWeather"
+             xmlns:local="clr-namespace:YetAnotherWeatherApp"
              mc:Ignorable="d"
              x:Class="CurrentWeather.Views.HomeView"
              x:Name="HomePage"
@@ -41,7 +41,7 @@
                     </Frame>
                     <Frame BackgroundColor="#80FFFFFF" VerticalOptions="Start" Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" CornerRadius="10" OutlineColor="Black" Padding="1" BorderColor="Black">
                         <StackLayout>
-                            <views:DailyWeatherSummaryView BackgroundColor="Transparent" VerticalOptions="End"/>
+                            
                         </StackLayout>
                     </Frame>
 
