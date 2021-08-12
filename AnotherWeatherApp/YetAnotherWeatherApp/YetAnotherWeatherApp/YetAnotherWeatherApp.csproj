@@ -6,33 +6,33 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\Rain01.jpg" />
-    <None Remove="Images\Rain02.jpg" />
-    <None Remove="Images\Skies01.jpg" />
-    <None Remove="Images\Snow01.jpg" />
-    <None Remove="Images\Snow02.jpg" />
-    <None Remove="Images\Snow03.jpg" />
-    <None Remove="Images\Snow04.jpg" />
+    <None Remove="Images\Rain1.jpg" />
+    <None Remove="Images\Rain2.jpg" />
+    <None Remove="Images\Skies1.jpg" />
+    <None Remove="Images\Snow1.jpg" />
+    <None Remove="Images\Snow2.jpg" />
+    <None Remove="Images\Snow3.jpg" />
+    <None Remove="Images\Snow4.jpg" />
     <None Remove="Images\Spring1.jpg" />
     <None Remove="Images\Spring2.jpg" />
     <None Remove="Images\Spring3.jpg" />
     <None Remove="Images\Spring4.jpg" />
-    <None Remove="Images\Thunder01.png" />
+    <None Remove="Images\Thunder1.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Images\Rain01.jpg" />
-    <EmbeddedResource Include="Images\Rain02.jpg" />
-    <EmbeddedResource Include="Images\Skies01.jpg" />
-    <EmbeddedResource Include="Images\Snow01.jpg" />
-    <EmbeddedResource Include="Images\Snow02.jpg" />
-    <EmbeddedResource Include="Images\Snow03.jpg" />
-    <EmbeddedResource Include="Images\Snow04.jpg" />
+    <EmbeddedResource Include="Images\Rain1.jpg" />
+    <EmbeddedResource Include="Images\Rain2.jpg" />
+    <EmbeddedResource Include="Images\Skies1.jpg" />
+    <EmbeddedResource Include="Images\Snow1.jpg" />
+    <EmbeddedResource Include="Images\Snow2.jpg" />
+    <EmbeddedResource Include="Images\Snow3.jpg" />
+    <EmbeddedResource Include="Images\Snow4.jpg" />
     <EmbeddedResource Include="Images\Spring1.jpg" />
     <EmbeddedResource Include="Images\Spring2.jpg" />
     <EmbeddedResource Include="Images\Spring3.jpg" />
     <EmbeddedResource Include="Images\Spring4.jpg" />
-    <EmbeddedResource Include="Images\Thunder01.png" />
+    <EmbeddedResource Include="Images\Thunder1.png" />
   </ItemGroup>
 
   <ItemGroup>

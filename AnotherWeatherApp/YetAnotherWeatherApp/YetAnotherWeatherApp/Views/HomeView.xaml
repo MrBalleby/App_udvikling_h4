@@ -24,7 +24,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Image BackgroundColor="red" Source="{local:ImageResource YetAnotherWeatherApp.Images.Rain01.jpg}" Aspect="Fill" Grid.RowSpan="5"></Image>
+                    <Image BackgroundColor="red" Source="{Binding BackgroundImageModel.Image}" Aspect="Fill" Grid.RowSpan="5"></Image>
                     <Frame BackgroundColor="#80FFFFFF" VerticalOptions="Start" Grid.Column="0" Grid.Row="0" CornerRadius="10" OutlineColor="Black" Padding="1" Margin="0,5,0,0" BorderColor="Black">
                         <StackLayout>
                             <SearchBar Grid.ColumnSpan="2" HorizontalOptions="Center" ></SearchBar>
