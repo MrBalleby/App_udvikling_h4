@@ -46,4 +46,10 @@
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
   </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\DailyWeatherSummaryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>
