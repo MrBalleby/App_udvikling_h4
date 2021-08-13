@@ -14514,25 +14514,25 @@ namespace YetAnotherWeatherApp.Droid
 			public const int notify_panel_notification_icon_bg = 2131165326;
 			
 			// aapt resource value: 0x7F07008F
-			public const int Rain01 = 2131165327;
+			public const int Rain1 = 2131165327;
 			
 			// aapt resource value: 0x7F070090
-			public const int Rain02 = 2131165328;
+			public const int Rain2 = 2131165328;
 			
 			// aapt resource value: 0x7F070091
-			public const int Skies01 = 2131165329;
+			public const int Skies1 = 2131165329;
 			
 			// aapt resource value: 0x7F070092
-			public const int Snow01 = 2131165330;
+			public const int Snow1 = 2131165330;
 			
 			// aapt resource value: 0x7F070093
-			public const int Snow02 = 2131165331;
+			public const int Snow2 = 2131165331;
 			
 			// aapt resource value: 0x7F070094
-			public const int Snow03 = 2131165332;
+			public const int Snow3 = 2131165332;
 			
 			// aapt resource value: 0x7F070095
-			public const int Snow04 = 2131165333;
+			public const int Snow4 = 2131165333;
 			
 			// aapt resource value: 0x7F070096
 			public const int Spring1 = 2131165334;
@@ -14550,7 +14550,7 @@ namespace YetAnotherWeatherApp.Droid
 			public const int test_custom_background = 2131165338;
 			
 			// aapt resource value: 0x7F07009B
-			public const int Thunder01 = 2131165339;
+			public const int Thunder1 = 2131165339;
 			
 			// aapt resource value: 0x7F07009C
 			public const int tooltip_frame_dark = 2131165340;

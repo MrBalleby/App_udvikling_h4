@@ -5,11 +5,15 @@ using System.Threading.Tasks;
 using YetAnotherWeatherApp.Models;
 using Xamarin.Essentials;
 
-namespace CurrentWeather.Services
+namespace YetAnotherWeatherApp.Services
 {
     public class GeoLocationHandler
     {
-        public async Task<GeoLocationModel> GetCorrdinatesAsync()
+        public GeoLocationModel GetCoordinates()
+        {
+            return GetCorrdinatesAsync().Result;
+        }
+        private async Task<GeoLocationModel> GetCorrdinatesAsync()
         {
             try
             {
@@ -24,22 +28,27 @@ namespace CurrentWeather.Services
                     };
                     return geoLocationModel;
                 }
+                ErrorModel.Instance.ErrorMessage = "Could not get Location";
                 return null;
             }
             catch (FeatureNotSupportedException fnsEx)
             {
+                ErrorModel.Instance.ErrorMessage = "No GPS is available";
                 return null;
             }
             catch (FeatureNotEnabledException fneEx)
             {
+                ErrorModel.Instance.ErrorMessage = "GPS not enabled";
                 return null;
             }
             catch (PermissionException pEx)
             {
+                ErrorModel.Instance.ErrorMessage = "GPS permission error";
                 return null;
             }
             catch (Exception ex)
             {
+                ErrorModel.Instance.ErrorMessage = "An unknown error occured";
                 return null;
             }
         }
