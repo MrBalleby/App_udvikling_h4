@@ -11,5 +11,9 @@ namespace YetAnotherWeatherApp.Models
 
         public DateTime Date { get; set; }
         public string ThisDayConverted { get => Date.ToString("dd. MMMM yyyy", _cultureInfo); }
+
+        public string Weekday { get => Date.DayOfWeek.ToString(); }
+
+        public string ThisDayConvertedWithWeekday { get => $"{Weekday}\t{ThisDayConverted}"; }
     }
 }

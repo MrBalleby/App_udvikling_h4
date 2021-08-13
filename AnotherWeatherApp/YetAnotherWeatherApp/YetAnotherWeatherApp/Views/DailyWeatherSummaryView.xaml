@@ -8,11 +8,16 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal" Spacing="60">
-                                <Label FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold" Text="{Binding Date, StringFormat='{0:MMM, dd}'}"/>
-                                <Label FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold" Text="{Binding IconName}"/>
-                                <Label FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold" Text="{Binding AirTemperature}"/>
-                            </StackLayout>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label FontFamily="Helvetica" HorizontalOptions="End" TextColor="White" FontSize="Large" FontAttributes="Bold" Text="{Binding Date, StringFormat='{0:MMM, dd}'}"/>
+                                <Label FontFamily="Helvetica" HorizontalOptions="Center" Grid.Column="1" TextColor="White" FontSize="Large" FontAttributes="Bold" Text="{Binding IconName}"/>
+                                <Label FontFamily="Helvetica" Grid.Column="2" TextColor="White" FontSize="Large" FontAttributes="Bold" Text="{Binding AirTemperature}"/>
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
