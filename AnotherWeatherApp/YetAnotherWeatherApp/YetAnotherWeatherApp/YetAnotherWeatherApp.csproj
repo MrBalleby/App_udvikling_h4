@@ -21,18 +21,24 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Images\Rain1.jpg" />
-    <EmbeddedResource Include="Images\Rain2.jpg" />
-    <EmbeddedResource Include="Images\Skies1.jpg" />
-    <EmbeddedResource Include="Images\Snow1.jpg" />
-    <EmbeddedResource Include="Images\Snow2.jpg" />
-    <EmbeddedResource Include="Images\Snow3.jpg" />
-    <EmbeddedResource Include="Images\Snow4.jpg" />
-    <EmbeddedResource Include="Images\Spring1.jpg" />
-    <EmbeddedResource Include="Images\Spring2.jpg" />
-    <EmbeddedResource Include="Images\Spring3.jpg" />
-    <EmbeddedResource Include="Images\Spring4.jpg" />
-    <EmbeddedResource Include="Images\Thunder1.png" />
+    <EmbeddedResource Include="50647-rainstorm.json" />
+    <EmbeddedResource Include="50649-sunny.json" />
+    <EmbeddedResource Include="50651-cloudy.json" />
+    <EmbeddedResource Include="50652-overcast.json" />
+    <EmbeddedResource Include="50653-the-rain-turned-fine.json" />
+    <EmbeddedResource Include="50654-light-rain.json" />
+    <EmbeddedResource Include="50655-moderate-rain.json" />
+    <EmbeddedResource Include="50656-heavy-rain.json" />
+    <EmbeddedResource Include="50657-thunderstorm.json" />
+    <EmbeddedResource Include="50658-light-snow-to-clear-up.json" />
+    <EmbeddedResource Include="50660-light-snow.json" />
+    <EmbeddedResource Include="50661-moderate-snow.json" />
+    <EmbeddedResource Include="50662-heavy-snow.json" />
+    <EmbeddedResource Include="50663-sleet.json" />
+    <EmbeddedResource Include="50664-sand-dust.json" />
+    <EmbeddedResource Include="50665-frost.json" />
+    <EmbeddedResource Include="50666-smog.json" />
+    <EmbeddedResource Include="50667-hail.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -57,5 +63,9 @@
     <EmbeddedResource Update="Views\DailyWeatherSummaryView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Images\" />
   </ItemGroup>
 </Project>

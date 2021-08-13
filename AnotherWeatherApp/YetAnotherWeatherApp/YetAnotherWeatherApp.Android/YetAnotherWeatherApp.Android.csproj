@@ -74,6 +74,24 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\50647-rainstorm.json" />
+    <AndroidAsset Include="Assets\50649-sunny.json" />
+    <AndroidAsset Include="Assets\50651-cloudy.json" />
+    <AndroidAsset Include="Assets\50652-overcast.json" />
+    <AndroidAsset Include="Assets\50653-the-rain-turned-fine.json" />
+    <AndroidAsset Include="Assets\50654-light-rain.json" />
+    <AndroidAsset Include="Assets\50655-moderate-rain.json" />
+    <AndroidAsset Include="Assets\50656-heavy-rain.json" />
+    <AndroidAsset Include="Assets\50657-thunderstorm.json" />
+    <AndroidAsset Include="Assets\50658-light-snow-to-clear-up.json" />
+    <AndroidAsset Include="Assets\50660-light-snow.json" />
+    <AndroidAsset Include="Assets\50661-moderate-snow.json" />
+    <AndroidAsset Include="Assets\50662-heavy-snow.json" />
+    <AndroidAsset Include="Assets\50663-sleet.json" />
+    <AndroidAsset Include="Assets\50664-sand-dust.json" />
+    <AndroidAsset Include="Assets\50665-frost.json" />
+    <AndroidAsset Include="Assets\50666-smog.json" />
+    <AndroidAsset Include="Assets\50667-hail.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />

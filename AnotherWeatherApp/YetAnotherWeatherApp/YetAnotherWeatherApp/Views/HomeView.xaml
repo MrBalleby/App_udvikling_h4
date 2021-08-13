@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:viewmodels="clr-namespace:YetAnotherWeatherApp.ViewModels"
              xmlns:views="clr-namespace:YetAnotherWeatherApp.Views"
-             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              xmlns:local="clr-namespace:YetAnotherWeatherApp"
              mc:Ignorable="d"
              x:Class="YetAnotherWeatherApp.Views.HomeView"
@@ -24,7 +24,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Image BackgroundColor="red" Source="{Binding BackgroundImageModel.Image}" Aspect="Fill" Grid.RowSpan="5"></Image>
+                    <Image BackgroundColor="blue" Source="{Binding BackgroundImageModel.Image}" Aspect="Fill" Grid.RowSpan="5"></Image>
                     <Frame BackgroundColor="#80FFFFFF" VerticalOptions="Start" Grid.Column="0" Grid.Row="0" CornerRadius="10" OutlineColor="Black" Padding="1" Margin="0,5,0,0" BorderColor="Black">
                         <StackLayout>
                             <SearchBar Grid.ColumnSpan="2" HorizontalOptions="Center" ></SearchBar>
@@ -32,11 +32,35 @@
                     </Frame>
                     <Frame BackgroundColor="#80FFFFFF" VerticalOptions="Start" Grid.Column="0" Grid.Row="1" CornerRadius="10" OutlineColor="Black" Padding="10" BorderColor="Black">
                         <StackLayout>
-                            <Label Text="{Binding TimeModel.ThisDayConverted}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
-                            <Label Text="23" FontSize="Header" FontFamily="Helvetica" FontAttributes="Bold"></Label>
-                            <Label Text="Regnvejr" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
-                            <Label Text="Vind | 110 km/h" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
-                            <Label Text="Fugtighed | 110%" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height=".8*"></RowDefinition>
+                                    <RowDefinition Height="3*"></RowDefinition>
+                                    <RowDefinition Height=".8*"></RowDefinition>
+                                    <RowDefinition Height=".8*"></RowDefinition>
+                                    <RowDefinition Height=".8*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding TimeModel.ThisDayConverted}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
+                                <Label HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="23" FontSize="Header" FontFamily="Helvetica" FontAttributes="Bold"></Label>
+                                <Label HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Regnvejr" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
+                                <Label HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Vind | 110 km/h" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
+                                <Label HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="Fugtighed | 110%" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
+                                <forms:AnimationView x:Name="animationView"
+                                                     Grid.Column="1"
+                                                     Grid.Row="0"
+                                                     Grid.RowSpan="5"
+                                                     BackgroundColor="Transparent"
+                                                     AnimationSource="AssetOrBundle"
+                                                     Animation="50647-rainstorm.json"
+                                                     VerticalOptions="FillAndExpand"
+                                                     HorizontalOptions="FillAndExpand"
+                                                     RepeatMode="Infinite"
+                                                     AutoPlay="True"/>
+                            </Grid>
                         </StackLayout>
                     </Frame>
                     <Frame BackgroundColor="#80FFFFFF" VerticalOptions="Start" Grid.Column="0" Grid.Row="2" Grid.RowSpan="2" CornerRadius="10" OutlineColor="Black" Padding="1" BorderColor="Black">
