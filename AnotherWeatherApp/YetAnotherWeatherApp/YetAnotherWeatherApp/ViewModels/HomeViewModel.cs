@@ -1,4 +1,5 @@
-﻿using System;
+﻿using YetAnotherWeatherApp.Services;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -11,6 +12,7 @@ namespace YetAnotherWeatherApp.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
+        GeoLocationHandler geoLocationHandler = new GeoLocationHandler();
         bool dayPickerIsVisible = false;
         public bool DayPickerIsVisible { 
             get => dayPickerIsVisible;
@@ -30,6 +32,10 @@ namespace YetAnotherWeatherApp.ViewModels
 
         public HomeViewModel()
         {
+            GeoLocationModel geoLocationModel = geoLocationHandler.GetCoordinates();
+
+
+
             ShowDayPicker = new Command(OnShowDayPicker);
             HideDayPicker = new Command(OnHideDayPicker);
             TimeModel = new TimeModel()
