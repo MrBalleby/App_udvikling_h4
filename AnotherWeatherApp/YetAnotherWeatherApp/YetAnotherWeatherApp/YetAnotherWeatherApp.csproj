@@ -45,6 +45,12 @@
     <Compile Update="Views\HomeView.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
+    <Compile Update="Views\DeatiledWeatherView.xaml.cs">
+      <DependentUpon>DeatiledWeatherView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SettingsView.xaml.cs">
+      <DependentUpon>SettingsView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
