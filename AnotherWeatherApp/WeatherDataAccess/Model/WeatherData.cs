@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,5 +15,7 @@ namespace WeatherDataAccess.Model
 
         [JsonProperty("properties")]
         public Properties Properties { get; set; }
+
+        public HttpStatusCode StatusCode { get; set; }
     }
 }
