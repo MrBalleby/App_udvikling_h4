@@ -12,28 +12,27 @@ namespace YetAnotherWeatherApp.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
-        GeoLocationHandler geoLocationHandler = new GeoLocationHandler();
-        bool dayPickerIsVisible = false;
-        public bool DayPickerIsVisible { 
+        private readonly GeoLocationHandler geoLocationHandler = new GeoLocationHandler();
+        private bool dayPickerIsVisible = false;
+        public bool DayPickerIsVisible
+        {
             get => dayPickerIsVisible;
-            set 
+            set
             {
                 dayPickerIsVisible = value;
                 OnPropertyChanged();
-            } 
+            }
         }
 
         public ICommand ShowDayPicker { get; set; }
         public ICommand HideDayPicker { get; set; }
 
         public TimeModel TimeModel { get; set; }
-        ObservableCollection<TimeModel> dates = new ObservableCollection<TimeModel>();
-        public ObservableCollection<TimeModel> Dates { get { return dates; } }
+        public ObservableCollection<TimeModel> Dates { get; } = new ObservableCollection<TimeModel>();
 
         public HomeViewModel()
         {
             GeoLocationModel geoLocationModel = geoLocationHandler.GetCoordinates();
-
 
 
             ShowDayPicker = new Command(OnShowDayPicker);
@@ -45,7 +44,7 @@ namespace YetAnotherWeatherApp.ViewModels
 
             for (int i = 0; i < 6; i++)
             {
-                dates.Add(new TimeModel()
+                Dates.Add(new TimeModel()
                 {
                     Date = DateTime.Now.AddDays(i),
                 });
@@ -55,13 +54,17 @@ namespace YetAnotherWeatherApp.ViewModels
         void OnShowDayPicker()
         {
             if (DayPickerIsVisible is false)
+            {
                 DayPickerIsVisible = true;
+            }
         }
 
         void OnHideDayPicker()
         {
             if (DayPickerIsVisible is true)
+            {
                 DayPickerIsVisible = false;
+            }
         }
     }
 }

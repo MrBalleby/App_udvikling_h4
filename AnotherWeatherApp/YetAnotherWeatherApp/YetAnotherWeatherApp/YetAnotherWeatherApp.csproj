@@ -6,9 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\IMG_20210528_193405.jpg" />
+    <None Remove="Images\Landscape1.JPG" />
     <None Remove="Images\Rain1.jpg" />
     <None Remove="Images\Rain2.jpg" />
     <None Remove="Images\Skies1.jpg" />
+    <None Remove="Images\Skies2.jpg" />
     <None Remove="Images\Snow1.jpg" />
     <None Remove="Images\Snow2.jpg" />
     <None Remove="Images\Snow3.jpg" />
@@ -39,10 +42,25 @@
     <EmbeddedResource Include="50665-frost.json" />
     <EmbeddedResource Include="50666-smog.json" />
     <EmbeddedResource Include="50667-hail.json" />
+    <EmbeddedResource Include="Images\Landscape1.JPG" />
+    <EmbeddedResource Include="Images\Rain1.jpg" />
+    <EmbeddedResource Include="Images\Rain2.jpg" />
+    <EmbeddedResource Include="Images\Skies1.jpg" />
+    <EmbeddedResource Include="Images\Skies2.jpg" />
+    <EmbeddedResource Include="Images\Snow1.jpg" />
+    <EmbeddedResource Include="Images\Snow2.jpg" />
+    <EmbeddedResource Include="Images\Snow3.jpg" />
+    <EmbeddedResource Include="Images\Snow4.jpg" />
+    <EmbeddedResource Include="Images\Spring1.jpg" />
+    <EmbeddedResource Include="Images\Spring2.jpg" />
+    <EmbeddedResource Include="Images\Spring3.jpg" />
+    <EmbeddedResource Include="Images\Spring4.jpg" />
+    <EmbeddedResource Include="Images\Thunder1.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="4.0.10" />
+    <PackageReference Include="Xam.Plugins.Forms.DeviceOrientation" Version="1.0.1" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
@@ -63,9 +81,5 @@
     <EmbeddedResource Update="Views\DailyWeatherSummaryView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Images\" />
   </ItemGroup>
 </Project>
