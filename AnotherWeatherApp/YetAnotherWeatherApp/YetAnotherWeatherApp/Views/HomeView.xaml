@@ -6,10 +6,14 @@
              xmlns:views="clr-namespace:YetAnotherWeatherApp.Views"
              xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              xmlns:local="clr-namespace:YetAnotherWeatherApp"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              mc:Ignorable="d"
              x:Class="YetAnotherWeatherApp.Views.HomeView"
              x:Name="HomePage"
              Shell.NavBarIsVisible="False">
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding RefreshWeatherData }"/>
+    </ContentPage.Behaviors>
     <ContentPage.Content>
         <AbsoluteLayout x:Name="ViewLayout">
             <AbsoluteLayout x:Name="ViewControls" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Transparent">
@@ -82,10 +86,10 @@
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding TimeModel.ThisDayConverted}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
-                                <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="23°" FontSize="Header" FontFamily="Helvetica" FontAttributes="Bold"></Label>
+                                <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentWeatherDetails.AirTemperature}" FontSize="Header" FontFamily="Helvetica" FontAttributes="Bold"></Label>
                                 <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Regnvejr" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
-                                <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Vind | 110 km/h" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
-                                <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="Fugtighed | 110%" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
+                                <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentWeatherDetails.WindSpeed, StringFormat='{}Vind | {0} m/s'}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
+                                <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentWeatherDetails.RelativeHumidity, StringFormat='Fugtighed | {0}%'}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
                                 <forms:AnimationView x:Name="animationView"
                                                      Grid.Column="1"
                                                      Grid.Row="0"
