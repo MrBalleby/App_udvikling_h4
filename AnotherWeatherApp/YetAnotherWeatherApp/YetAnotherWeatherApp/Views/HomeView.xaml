@@ -25,7 +25,20 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Image BackgroundColor="red" Source="{local:ImageResource YetAnotherWeatherApp.Images.Landscape1.JPG}" Aspect="AspectFill" Grid.RowSpan="5"></Image>
-                    
+                    <ListView x:Name="list" Grid.Row="1" 
+                              Grid.RowSpan="4"
+                              ItemsSource="{Binding FilteredItems}"
+                              IsVisible="{Binding controlShowSearchListIsVisible}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Label Text="{Binding CityModel.Name}"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                     <Frame BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Column="0" Grid.Row="0" CornerRadius="10" Padding="1" Margin="0,5,0,0">
                         <StackLayout>
                             <Grid>
@@ -33,7 +46,13 @@
                                     <ColumnDefinition Width="70*"></ColumnDefinition>
                                     <ColumnDefinition Width="30*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <SearchBar Grid.Column="0" HorizontalOptions="FillAndExpand" FontFamily="Helvetica" FontAttributes="Bold" FontSize="Medium"></SearchBar>
+                                <SearchBar Grid.Column="0"
+                                           SearchCommand="{Binding searchTerm}"
+                                           Placeholder="Søg efter by"
+                                           HorizontalOptions="FillAndExpand"
+                                           FontFamily="Helvetica"
+                                           FontAttributes="Bold"
+                                           FontSize="Medium"/>
                                 <Button Text="Gå til YR" 
                                         Command="{Binding OpenWebCommand}"
                                         Grid.Column="1"
