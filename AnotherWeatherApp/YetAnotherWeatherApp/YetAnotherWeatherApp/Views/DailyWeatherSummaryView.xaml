@@ -22,6 +22,10 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <StackLayout>
+                <Button Text="Clear" Clicked="Button_Clicked_1"/>
+                <Button Text="ReplaceWithRealData" Clicked="Button_Clicked"/>
+            </StackLayout>
         </StackLayout>
   </ContentView.Content>
 </ContentView>
