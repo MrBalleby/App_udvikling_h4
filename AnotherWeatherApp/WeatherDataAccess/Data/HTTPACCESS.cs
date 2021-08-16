@@ -23,35 +23,38 @@ namespace WeatherDataAccess.Data
         /// <returns></returns>
         public async Task<WeatherData> GetWeatherFromLocationAsync(double lat, double lon)
         {
-            using var httpClient = new HttpClient();
-
-            httpClient.DefaultRequestHeaders.Add("User-Agent", "C# App");
-
-            var uriBuilder = new UriBuilder(_baseUrl);
-
-            var query = HttpUtility.ParseQueryString(uriBuilder.Query);
-            query["lat"] = lat.ToString(System.Globalization.CultureInfo.InvariantCulture);
-            query["lon"] = lon.ToString(System.Globalization.CultureInfo.InvariantCulture);
-            uriBuilder.Query = query.ToString();
-
-            var test = uriBuilder.ToString();
-
-            using var response = await httpClient.GetAsync(uriBuilder.ToString());
-
-            if (response.IsSuccessStatusCode is false)
-                return new WeatherData { StatusCode = response.StatusCode };
-
-            var responseBody = await response.Content.ReadAsStringAsync();
-
-            var settings = new JsonSerializerSettings
+            using (var httpClient = new HttpClient()) 
             {
-                ContractResolver = new DefaultContractResolver()
-            };
+                httpClient.DefaultRequestHeaders.Add("User-Agent", "C# App");
 
-            var weatherData = JsonConvert.DeserializeObject<WeatherData>(responseBody, settings);
-            weatherData.StatusCode = response.StatusCode;
+                var uriBuilder = new UriBuilder(_baseUrl);
 
-            return weatherData;
+                var query = HttpUtility.ParseQueryString(uriBuilder.Query);
+                query["lat"] = lat.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                query["lon"] = lon.ToString(System.Globalization.CultureInfo.InvariantCulture);
+                uriBuilder.Query = query.ToString();
+
+                var test = uriBuilder.ToString();
+
+                using (var response = await httpClient.GetAsync(uriBuilder.ToString()))
+                {
+
+                    if (response.IsSuccessStatusCode is false)
+                        return new WeatherData { StatusCode = response.StatusCode };
+
+                    var responseBody = await response.Content.ReadAsStringAsync();
+
+                    var settings = new JsonSerializerSettings
+                    {
+                        ContractResolver = new DefaultContractResolver()
+                    };
+
+                    var weatherData = JsonConvert.DeserializeObject<WeatherData>(responseBody, settings);
+                    weatherData.StatusCode = response.StatusCode;
+
+                    return weatherData;
+                }
+            }
         }
     }
 }

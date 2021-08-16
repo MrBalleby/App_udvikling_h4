@@ -21,7 +21,7 @@ namespace WeatherDataAccess.Model
             {
                 double? lon = null;
 
-                if (Coordinates is not null && Coordinates.Length > 2)
+                if (Coordinates != null && Coordinates.Length > 2)
                 {
                     lon = Coordinates[0];
                 }
@@ -36,7 +36,7 @@ namespace WeatherDataAccess.Model
             {
                 double? lat = null;
 
-                if (Coordinates is not null && Coordinates.Length > 2)
+                if (Coordinates != null && Coordinates.Length > 2)
                 {
                     lat = Coordinates[1];
                 }

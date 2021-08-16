@@ -4,7 +4,7 @@
              x:Class="YetAnotherWeatherApp.Views.DailyWeatherSummaryView">
   <ContentView.Content>
       <StackLayout>
-            <ListView x:Name="DateWeatherSummaryView" SeparatorVisibility="None">
+            <ListView x:Name="DateWeatherSummaryView">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -16,7 +16,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Label FontFamily="Helvetica" HorizontalOptions="End" TextColor="White" FontSize="Large" FontAttributes="Bold" Text="{Binding Date, StringFormat='{0:MMM, dd}'}"/>
                                 <Label FontFamily="Helvetica" HorizontalOptions="Center" Grid.Column="1" TextColor="White" FontSize="Large" FontAttributes="Bold" Text="{Binding IconName}"/>
-                                <Label FontFamily="Helvetica" Grid.Column="2" TextColor="White" FontSize="Large" FontAttributes="Bold" Text="{Binding AirTemperature}"/>
+                                <Label FontFamily="Helvetica" Grid.Column="2" TextColor="White" FontSize="Large" FontAttributes="Bold" Text="{Binding AirTemperature, StringFormat='{0}°'}"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
