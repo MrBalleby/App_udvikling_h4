@@ -3,7 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
+using System.Threading;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using YetAnotherWeatherApp.Models;
@@ -41,6 +42,17 @@ namespace YetAnotherWeatherApp.ViewModels
             onChanged?.Invoke();
             OnPropertyChanged(propertyName);
             return true;
+        }
+
+        public GeoLocationModel GeoLocation { get; set; }
+        protected void LocationService()
+        {
+            using (Task<GeoLocationModel> task = GeoLocationHandler.GetCorrdinatesAsync())
+            {
+                task.Start();
+                GeoLocation = task.Result;
+                task.Dispose();
+            }
         }
 
         protected Orientation SetDeviceOrientation()

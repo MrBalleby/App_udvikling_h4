@@ -7,12 +7,14 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 using YetAnotherWeatherApp.Models;
+using System.Threading;
+using Xamarin.Essentials;
 
 namespace YetAnotherWeatherApp.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
-        private readonly GeoLocationHandler geoLocationHandler = new GeoLocationHandler();
+        
         private bool dayPickerIsVisible = false;
         public bool DayPickerIsVisible
         {
@@ -23,7 +25,7 @@ namespace YetAnotherWeatherApp.ViewModels
                 OnPropertyChanged();
             }
         }
-
+        public ICommand OpenWebCommand { get; }
         public ICommand ShowDayPicker { get; set; }
         public ICommand HideDayPicker { get; set; }
 
@@ -32,11 +34,14 @@ namespace YetAnotherWeatherApp.ViewModels
 
         public HomeViewModel()
         {
-            GeoLocationModel geoLocationModel = geoLocationHandler.GetCoordinates();
-
-
+            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://www.yr.no/en"));
             ShowDayPicker = new Command(OnShowDayPicker);
             HideDayPicker = new Command(OnHideDayPicker);
+
+            DeviceStorageHandler deviceStorageHandler = new DeviceStorageHandler();
+            deviceStorageHandler.GetAppFolder();
+
+
             TimeModel = new TimeModel()
             {
                 Date = DateTime.Now,
