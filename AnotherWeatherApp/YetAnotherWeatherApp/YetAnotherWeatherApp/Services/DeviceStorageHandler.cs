@@ -9,7 +9,7 @@ namespace YetAnotherWeatherApp.Services
     public class DeviceStorageHandler
     {
 
-        private async void LoadFile(string fileName)
+        public async void LoadFile(string fileName)
         {
             var libFolder = FileSystem.AppDataDirectory;
             using (var stream = await FileSystem.OpenAppPackageFileAsync(fileName))

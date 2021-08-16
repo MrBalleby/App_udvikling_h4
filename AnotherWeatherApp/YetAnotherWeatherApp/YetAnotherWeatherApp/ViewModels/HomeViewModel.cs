@@ -39,7 +39,7 @@ namespace YetAnotherWeatherApp.ViewModels
             HideDayPicker = new Command(OnHideDayPicker);
 
             DeviceStorageHandler deviceStorageHandler = new DeviceStorageHandler();
-            deviceStorageHandler.GetAppFolder();
+            deviceStorageHandler.LoadFile("dk.csv");
 
 
             TimeModel = new TimeModel()
