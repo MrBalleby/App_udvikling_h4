@@ -4,16 +4,13 @@ using System.Text;
 using System.Threading.Tasks;
 using YetAnotherWeatherApp.Models;
 using Xamarin.Essentials;
+using System.ComponentModel;
 
 namespace YetAnotherWeatherApp.Services
 {
-    public class GeoLocationHandler
+    public static class GeoLocationHandler
     {
-        public GeoLocationModel GetCoordinates()
-        {
-            return GetCorrdinatesAsync().Result;
-        }
-        private async Task<GeoLocationModel> GetCorrdinatesAsync()
+        public static async Task<GeoLocationModel> GetCorrdinatesAsync()
         {
             try
             {

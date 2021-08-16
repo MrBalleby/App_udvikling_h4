@@ -7,12 +7,13 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 using YetAnotherWeatherApp.Models;
+using System.Threading;
 
 namespace YetAnotherWeatherApp.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
-        private readonly GeoLocationHandler geoLocationHandler = new GeoLocationHandler();
+        
         private bool dayPickerIsVisible = false;
         public bool DayPickerIsVisible
         {
@@ -32,9 +33,6 @@ namespace YetAnotherWeatherApp.ViewModels
 
         public HomeViewModel()
         {
-            GeoLocationModel geoLocationModel = geoLocationHandler.GetCoordinates();
-
-
             ShowDayPicker = new Command(OnShowDayPicker);
             HideDayPicker = new Command(OnHideDayPicker);
             TimeModel = new TimeModel()
