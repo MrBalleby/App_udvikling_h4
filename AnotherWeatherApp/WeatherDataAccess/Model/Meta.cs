@@ -10,7 +10,7 @@ namespace WeatherDataAccess.Model
     public class Meta
     {
         [JsonProperty("updated_at")]
-        public DateTime? UpdatedAt { get; set; }
+        public DateTimeOffset? UpdatedAt { get; set; }
 
         [JsonProperty("units")]
         public Units Units { get; set; }

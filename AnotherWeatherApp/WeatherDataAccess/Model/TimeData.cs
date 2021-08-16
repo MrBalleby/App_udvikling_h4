@@ -10,7 +10,7 @@ namespace WeatherDataAccess.Model
     public class TimeData
     {
         [JsonProperty("time")]
-        public DateTime Time { get; set; }
+        public DateTimeOffset Time { get; set; }
 
         [JsonProperty("data")]
         public Data Data { get; set; }
