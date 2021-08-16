@@ -89,9 +89,6 @@ namespace YetAnotherWeatherApp.ViewModels
             HideDayPicker = new Command(OnHideDayPicker);
 
             RefreshWeatherData = new AsyncCommand(OnRefreshWeatherData);
-            
-            DeviceStorageHandler deviceStorageHandler = new DeviceStorageHandler();
-            deviceStorageHandler.LoadFile("dk.csv");
 
 
             TimeModel = new TimeModel()
