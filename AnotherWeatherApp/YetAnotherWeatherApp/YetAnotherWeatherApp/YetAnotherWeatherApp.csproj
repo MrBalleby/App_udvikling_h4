@@ -66,6 +66,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\WeatherDataAccess\WeatherDataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Views\HomeView.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
