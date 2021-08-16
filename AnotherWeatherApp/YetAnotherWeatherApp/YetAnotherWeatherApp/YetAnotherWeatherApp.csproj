@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="dk.csv" />
     <None Remove="Images\IMG_20210528_193405.jpg" />
     <None Remove="Images\Landscape1.JPG" />
     <None Remove="Images\Rain1.jpg" />
@@ -42,6 +43,7 @@
     <EmbeddedResource Include="50665-frost.json" />
     <EmbeddedResource Include="50666-smog.json" />
     <EmbeddedResource Include="50667-hail.json" />
+    <EmbeddedResource Include="dk.csv" />
     <EmbeddedResource Include="Images\Landscape1.JPG" />
     <EmbeddedResource Include="Images\Rain1.jpg" />
     <EmbeddedResource Include="Images\Rain2.jpg" />

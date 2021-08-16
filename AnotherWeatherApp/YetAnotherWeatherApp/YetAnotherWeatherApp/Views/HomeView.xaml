@@ -25,9 +25,27 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Image BackgroundColor="red" Source="{local:ImageResource YetAnotherWeatherApp.Images.Landscape1.JPG}" Aspect="AspectFill" Grid.RowSpan="5"></Image>
+                    
                     <Frame BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Column="0" Grid.Row="0" CornerRadius="10" Padding="1" Margin="0,5,0,0">
                         <StackLayout>
-                            <SearchBar Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" FontFamily="Helvetica" FontAttributes="Bold" FontSize="Medium"></SearchBar>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70*"></ColumnDefinition>
+                                    <ColumnDefinition Width="30*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <SearchBar Grid.Column="0" HorizontalOptions="FillAndExpand" FontFamily="Helvetica" FontAttributes="Bold" FontSize="Medium"></SearchBar>
+                                <Button Text="Gå til YR" 
+                                        Command="{Binding OpenWebCommand}"
+                                        Grid.Column="1"
+                                        BackgroundColor="#80FFFFFF"
+                                        CornerRadius="20"
+                                        TextColor="Black"
+                                        BorderColor="Black"
+                                        BorderWidth="1"
+                                        FontFamily="Helvetica"
+                                        FontSize="Medium"
+                                        FontAttributes="Bold" HorizontalOptions="End"/>
+                            </Grid>
                         </StackLayout>
                     </Frame>
                     <Frame BackgroundColor="Transparent" VerticalOptions="Start" Grid.Column="0" Grid.Row="1" CornerRadius="10"  Padding="10">
