@@ -39,13 +39,6 @@ namespace YetAnotherWeatherApp.ViewModels
             get { return title; }
             set { SetProperty(ref title, value); }
         }
-        private void SearchCommandExecute()
-        {
-            
-
-            //var tempRecords = CityModel.Where(c => c.FullName.Contains(Text));
-            //Customers = new ObservableCollection<Customer>(tempRecords);
-        }
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName] string propertyName = "",
             Action onChanged = null)
@@ -98,10 +91,9 @@ namespace YetAnotherWeatherApp.ViewModels
                 task.Dispose();
             }
         }
-
-        protected Orientation SetDeviceOrientation()
+        public Orientation orientation = new Orientation();
+        protected void SetDeviceOrientation()
         {
-            Orientation orientation = new Orientation();
             MessagingCenter.Subscribe<DeviceOrientationChangeMessage>(this, DeviceOrientationChangeMessage.MessageId, (message) =>
             {
                 switch (message.Orientation)
@@ -120,7 +112,6 @@ namespace YetAnotherWeatherApp.ViewModels
                         break;
                 }
             });
-            return orientation;
         }
         protected void StopDeviceOrientation()
         {
