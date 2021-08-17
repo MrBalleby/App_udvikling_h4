@@ -16,43 +16,45 @@
         <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding RefreshWeatherData }"/>
     </ContentPage.Behaviors>
     <ContentPage.Content>
-        <AbsoluteLayout x:Name="ViewLayout">
-            <AbsoluteLayout x:Name="ViewControls" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Transparent">
-                <Grid AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,1,1,1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height=".5*"></RowDefinition>
-                        <RowDefinition Height="2.3*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height="*"></RowDefinition>
-                        <RowDefinition Height=".8*"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Image BackgroundColor="Transparent" Source="{local:ImageResource YetAnotherWeatherApp.Images.Landscape1.JPG}" Aspect="Fill" Grid.RowSpan="5"></Image>
-                    <Frame BackgroundColor="Transparent" VerticalOptions="Start" Grid.Column="0" Grid.Row="1" CornerRadius="10"  Padding="10">
-                        <StackLayout>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height=".8*"></RowDefinition>
-                                    <RowDefinition Height="3*"></RowDefinition>
-                                    <RowDefinition Height=".8*"></RowDefinition>
-                                    <RowDefinition Height=".8*"></RowDefinition>
-                                    <RowDefinition Height=".8*"></RowDefinition>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding TimeModel.ThisDayConverted}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
-                                <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentWeatherDetails.AirTemperature, StringFormat='{0}°'}" FontSize="Header" FontFamily="Helvetica" FontAttributes="Bold"></Label>
-                                <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentWeatherIconModel.Description_da}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
-                                <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentWeatherDetails.WindSpeed, StringFormat='{}Vind | {0} m/s'}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
-                                <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentWeatherDetails.RelativeHumidity, StringFormat='Fugtighed | {0}%'}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
-                                <forms:AnimationView x:Name="animationView"
+        <StackLayout x:Name="outerstack">
+            <ScrollView>
+                <AbsoluteLayout x:Name="ViewLayout">
+                <AbsoluteLayout x:Name="ViewControls" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Transparent">
+                    <Grid AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,1,1,1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height=".3*"></RowDefinition>
+                            <RowDefinition Height="2*"></RowDefinition>
+                            <RowDefinition Height="1.5*"></RowDefinition>
+                            <RowDefinition Height="1.5*"></RowDefinition>
+                            <RowDefinition Height="0.8*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image BackgroundColor="Transparent" Source="{local:ImageResource YetAnotherWeatherApp.Images.Landscape1.JPG}" Aspect="AspectFill" Grid.RowSpan="5"></Image>
+                        <Frame BackgroundColor="Transparent" VerticalOptions="Start" Grid.Column="0" Grid.Row="1" CornerRadius="10"  Padding="10">
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height=".8*"></RowDefinition>
+                                        <RowDefinition Height="3*"></RowDefinition>
+                                        <RowDefinition Height=".8*"></RowDefinition>
+                                        <RowDefinition Height=".8*"></RowDefinition>
+                                        <RowDefinition Height=".8*"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1.4*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding TimeModel.ThisDayConverted}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
+                                    <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentWeatherDetails.AirTemperature, StringFormat='{0}°'}" FontSize="Header" FontFamily="Helvetica" FontAttributes="Bold"></Label>
+                                    <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentWeatherIconModel.Description_da}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
+                                    <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentWeatherDetails.WindSpeed, StringFormat='{}Vind | {0} m/s'}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
+                                    <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentWeatherDetails.RelativeHumidity, StringFormat='Fugtighed | {0}%'}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
+                                    <forms:AnimationView x:Name="animationView"
                                                      Grid.Column="1"
                                                      Grid.Row="0"
-                                                     Grid.RowSpan="5"
+                                                     Grid.RowSpan="4"
                                                      BackgroundColor="Transparent"
                                                      AnimationSource="AssetOrBundle"
                                                      Animation="{Binding CurrentWeatherIconModel.IconImage}"
@@ -60,38 +62,38 @@
                                                      HorizontalOptions="FillAndExpand"
                                                      RepeatMode="Infinite"
                                                      AutoPlay="True"/>
-                            </Grid>
-                        </StackLayout>
-                    </Frame>
-                    <Frame BackgroundColor="Transparent" VerticalOptions="Start" Grid.Column="0" Grid.Row="2" Grid.RowSpan="2">
-                        <Frame BackgroundColor="#a0000000" CornerRadius="10">
-                            <StackLayout>
-                                <views:DailyWeatherSummaryView/>
+                                </Grid>
                             </StackLayout>
                         </Frame>
-                    </Frame>
-                    <Frame BackgroundColor="Transparent" VerticalOptions="End" Grid.Column="0" Grid.Row="4">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="30*"></ColumnDefinition>
-                                <ColumnDefinition Width="70*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Button Text="Hjem" Grid.Column="0" BackgroundColor="#80FFFFFF" CornerRadius="20" TextColor="Black" BorderColor="Black" BorderWidth="1" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Button>
-                            <Button Text="Vælg Dag" Grid.Column="1" BackgroundColor="#80FFFFFF" CornerRadius="20" TextColor="Black" BorderColor="Black" BorderWidth="1" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold" Command="{Binding ShowDayPicker}"></Button>
-                        </Grid>
-                    </Frame>
-                    <Frame BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Column="0" Grid.Row="0" Grid.RowSpan="5" CornerRadius="10" Padding="1" Margin="0,5,0,0">
-                        <StackLayout>
+                        <Frame BackgroundColor="Transparent" VerticalOptions="Start" Grid.Column="0" Grid.Row="2" Grid.RowSpan="2">
+                            <Frame BackgroundColor="#a0000000" CornerRadius="10">
+                                <StackLayout>
+                                    <views:DailyWeatherSummaryView/>
+                                </StackLayout>
+                            </Frame>
+                        </Frame>
+                        <Frame BackgroundColor="Transparent" VerticalOptions="End" Grid.Column="0" Grid.Row="4">
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="70*"></ColumnDefinition>
                                     <ColumnDefinition Width="30*"></ColumnDefinition>
+                                    <ColumnDefinition Width="70*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="*"/>
-                                </Grid.RowDefinitions>
-                                <SearchBar x:Name="searchbar"
+                                <Button Text="Hjem" Grid.Column="0" BackgroundColor="#80FFFFFF" CornerRadius="20" TextColor="Black" BorderColor="Black" BorderWidth="1" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Button>
+                                <Button Text="Vælg Dag" Grid.Column="1" BackgroundColor="#80FFFFFF" CornerRadius="20" TextColor="Black" BorderColor="Black" BorderWidth="1" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold" Command="{Binding ShowDayPicker}"></Button>
+                            </Grid>
+                        </Frame>
+                        <Frame BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Column="0" Grid.Row="0" Grid.RowSpan="5" CornerRadius="10" Padding="1" Margin="0,5,0,0">
+                            <StackLayout>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="70*"></ColumnDefinition>
+                                        <ColumnDefinition Width="30*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <SearchBar x:Name="searchbar"
                                         Grid.Row="0"
                                         Placeholder="Søg efter by"
                                         TextChanged="SearchBar_TextChanged"
@@ -100,7 +102,7 @@
                                         FontFamily="Helvetica"
                                         FontAttributes="Bold"
                                         FontSize="Medium"/>
-                                <ListView x:Name="citylist"
+                                    <ListView x:Name="citylist"
                                                 Grid.Row="1"
                                                 Grid.ColumnSpan="2"
                                                 VerticalOptions="Start"
@@ -108,17 +110,17 @@
                                                 BackgroundColor="White"
                                                 ItemSelected="citylist_ItemSelected"
                                                 Opacity="1">
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <ViewCell>
-                                                <StackLayout>
-                                                    <Label Text="{Binding Name}"/>
-                                                </StackLayout>
-                                            </ViewCell>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
-                                <Button Text="Gå til YR" 
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <StackLayout>
+                                                        <Label Text="{Binding Name}"/>
+                                                    </StackLayout>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                    <Button Text="Gå til YR" 
                                         Command="{Binding OpenWebCommand}"
                                         Grid.Column="1"
                                         BackgroundColor="#80FFFFFF"
@@ -129,37 +131,37 @@
                                         FontFamily="Helvetica"
                                         FontSize="Medium"
                                         FontAttributes="Bold" HorizontalOptions="End"/>
-                            </Grid>
-                        </StackLayout>
-                    </Frame>
-                </Grid>
-                <ContentView x:Name="overlay"  
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                    <ContentView x:Name="overlay"  
                  AbsoluteLayout.LayoutBounds="1, 1, 1, 1"  
                  AbsoluteLayout.LayoutFlags="All"  
                  IsVisible="{Binding DayPickerIsVisible}"
                  BackgroundColor="#C0808080"  
                  Padding="50, 70">
-                    <StackLayout   
+                        <StackLayout   
                    BackgroundColor="#90FFFFFF"   
                    HorizontalOptions="Start"   
                    VerticalOptions="Start"   
                    Padding="10">
 
-                        <ListView x:Name="WeatherListView" ItemsSource="{Binding Dates}" >
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <StackLayout>
-                                            <Label Text="{Binding ThisDayConverted}"/>
-                                        </StackLayout>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                            <ListView x:Name="WeatherListView" ItemsSource="{Binding Dates}" >
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout>
+                                                <Label Text="{Binding ThisDayConverted}"/>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
 
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
 
-                            <Button 
+                                <Button 
                                 CornerRadius="20"
                                 BorderWidth="1"
                                 BorderColor="Black"
@@ -170,7 +172,7 @@
                                 Command="{Binding HideDayPicker}"
                             />
 
-                            <Button
+                                <Button
                                 CornerRadius="20"
                                 BorderWidth="1" 
                                 BorderColor="Black"
@@ -180,11 +182,15 @@
                                 HorizontalOptions="Center"
                                 Command="{Binding HideDayPicker}"
                             />
-                        </StackLayout>
+                            </StackLayout>
 
-                    </StackLayout>
-                </ContentView>
+                        </StackLayout>
+                    </ContentView>
+                </AbsoluteLayout>
             </AbsoluteLayout>
-        </AbsoluteLayout>
+            </ScrollView>
+        </StackLayout>
+        
+        
     </ContentPage.Content>
 </ContentPage>

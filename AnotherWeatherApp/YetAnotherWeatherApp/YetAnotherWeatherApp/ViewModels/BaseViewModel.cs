@@ -10,9 +10,9 @@ using Xamarin.CommunityToolkit.ObjectModel;
 
 using YetAnotherWeatherApp.Models;
 using YetAnotherWeatherApp.Services;
-using static YetAnotherWeatherApp.Services.DeviceOrientationHandler;
 using Newtonsoft.Json;
 using System.IO;
+using Xamarin.Essentials;
 
 namespace YetAnotherWeatherApp.ViewModels
 {
@@ -90,32 +90,6 @@ namespace YetAnotherWeatherApp.ViewModels
                 GeoLocation = task.Result;
                 task.Dispose();
             }
-        }
-        public Orientation orientation = new Orientation();
-        protected void SetDeviceOrientation()
-        {
-            MessagingCenter.Subscribe<DeviceOrientationChangeMessage>(this, DeviceOrientationChangeMessage.MessageId, (message) =>
-            {
-                switch (message.Orientation)
-                {
-                    case DeviceOrientations.Undefined:
-                        orientation = Orientation.None;
-                        break;
-                    case DeviceOrientations.Landscape:
-                        orientation = Orientation.Landscape;
-                        break;
-                    case DeviceOrientations.Portrait:
-                        orientation = Orientation.Portrait;
-                        break;
-                    default:
-                        orientation = Orientation.None;
-                        break;
-                }
-            });
-        }
-        protected void StopDeviceOrientation()
-        {
-            MessagingCenter.Unsubscribe<DeviceOrientationChangeMessage>(this, DeviceOrientationChangeMessage.MessageId);
         }
 
         #region INotifyPropertyChanged

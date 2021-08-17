@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using YetAnotherWeatherApp.Models;
@@ -20,8 +20,23 @@ namespace YetAnotherWeatherApp.Views
         {
             InitializeComponent();
             this.BindingContext = new HomeViewModel();
+            base.OnAppearing();
             citylist.IsVisible = false;
         }
+
+        protected override void OnAppearing() 
+        {
+            DisplayOrientation orientation = DeviceDisplay.MainDisplayInfo.Orientation;
+            if (orientation == Xamarin.Essentials.DisplayOrientation.Landscape)
+            {
+                outerstack.Orientation = StackOrientation.Horizontal;
+            }
+            else
+            {
+                outerstack.Orientation = StackOrientation.Vertical;
+            }
+    }
+
 
         //Dynamic ItemList for city search
         private ObservableCollection<CityModel> Cities = new ObservableCollection<CityModel>();
