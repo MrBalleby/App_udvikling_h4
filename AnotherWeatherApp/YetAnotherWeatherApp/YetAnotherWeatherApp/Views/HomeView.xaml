@@ -12,6 +12,7 @@
              x:Name="HomePage"
              Shell.NavBarIsVisible="False">
     <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding LoadWeatherIconList }"/>
         <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding RefreshWeatherData }"/>
     </ContentPage.Behaviors>
     <ContentPage.Content>
@@ -96,7 +97,7 @@
                                                      Grid.RowSpan="5"
                                                      BackgroundColor="Transparent"
                                                      AnimationSource="AssetOrBundle"
-                                                     Animation="50647-rainstorm.json"
+                                                     Animation="{Binding CurrentWeatherIconModel.IconImage}"
                                                      VerticalOptions="FillAndExpand"
                                                      HorizontalOptions="FillAndExpand"
                                                      RepeatMode="Infinite"

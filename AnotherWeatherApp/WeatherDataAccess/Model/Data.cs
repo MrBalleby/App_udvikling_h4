@@ -20,5 +20,22 @@ namespace WeatherDataAccess.Model
 
         [JsonProperty("next_12_hours")]
         public NextXHours NextTwelveHours { get; set; }
+
+        public string Icon
+        {
+            get
+            {
+                if (NextHour?.Summary != null)
+                    return NextHour.Summary.SymbolCode;
+
+                if (NextSixHours?.Summary != null)
+                    return NextSixHours.Summary.SymbolCode;
+
+                if (NextTwelveHours?.Summary != null)
+                    return NextTwelveHours.Summary.SymbolCode;
+
+                return string.Empty;
+            }
+        }
     }
 }

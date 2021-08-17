@@ -27,7 +27,16 @@ namespace YetAnotherWeatherApp.ViewModels
                 OnPropertyChanged();
             }
         }
-
+        WeatherIconModel currentWeatherIconModel = new WeatherIconModel { Description_da = "Sikkert godt vejr", Description_en = "Probably nice weather" };
+        public WeatherIconModel CurrentWeatherIconModel
+        {
+            get => currentWeatherIconModel;
+            set
+            {
+                currentWeatherIconModel = value;
+                OnPropertyChanged();
+            }
+        }
         private bool controlShowSearchListIsVisible = false;
         private bool dayPickerIsVisible = false;
         public bool DayPickerIsVisible
@@ -113,7 +122,14 @@ namespace YetAnotherWeatherApp.ViewModels
 
             if (weatherData != null)
             {
-                CurrentWeatherDetails = weatherData.Properties?.Timeseries.FirstOrDefault()?.Data?.Instant?.Details;
+                var timeData = weatherData.Properties?.Timeseries.FirstOrDefault();
+                CurrentWeatherDetails = timeData?.Data?.Instant?.Details;
+                
+                if (WeatherIconList == null || WeatherIconList.Count == 0)
+                    await LoadWeatherIconList.ExecuteAsync();
+
+                if (WeatherIconList.Any(wi => wi.Code == timeData?.Data?.Icon))
+                    CurrentWeatherIconModel = WeatherIconList.First(wi => wi.Code == timeData.Data.Icon);
             }
         }
 

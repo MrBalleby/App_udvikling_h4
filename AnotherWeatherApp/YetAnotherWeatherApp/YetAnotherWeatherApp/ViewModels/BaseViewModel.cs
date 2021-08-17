@@ -6,15 +6,23 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.CommunityToolkit.ObjectModel;
 
 using YetAnotherWeatherApp.Models;
 using YetAnotherWeatherApp.Services;
 using static YetAnotherWeatherApp.Services.DeviceOrientationHandler;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace YetAnotherWeatherApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        public BaseViewModel()
+        {
+            LoadWeatherIconList = new AsyncCommand(OnLoadWeatherIconList);
+        }
+
         List<CityModel> cityList = new List<CityModel>();
         public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
@@ -49,6 +57,35 @@ namespace YetAnotherWeatherApp.ViewModels
             onChanged?.Invoke();
             OnPropertyChanged(propertyName);
             return true;
+        }
+
+        List<WeatherIconModel> weatherIconList = new List<WeatherIconModel>();
+        public List<WeatherIconModel> WeatherIconList
+        {
+            get => weatherIconList;
+            set
+            {
+                weatherIconList = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public AsyncCommand LoadWeatherIconList { get; set; }
+
+        async Task OnLoadWeatherIconList()
+        {
+            string filename = "WeatherIcon.json";
+
+            using (var stream = await Xamarin.Essentials.FileSystem.OpenAppPackageFileAsync(filename))
+            {
+                using (var reader = new StreamReader(stream))
+                {
+                    var fileContents = await reader.ReadToEndAsync();
+
+                    var result = JsonConvert.DeserializeObject<WeatherIconList>(fileContents);
+                    WeatherIconList = result.WhetherIconList;
+                }
+            }
         }
 
         public GeoLocationModel GeoLocation { get; set; }
