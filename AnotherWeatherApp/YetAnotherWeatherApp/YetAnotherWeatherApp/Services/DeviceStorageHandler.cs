@@ -1,4 +1,5 @@
 ﻿using CsvHelper;
+using CsvHelper.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -17,25 +18,33 @@ namespace YetAnotherWeatherApp.Services
         {
             try
             {
+                Content = new ObservableCollection<CityModel>();
                 var libFolder = FileSystem.AppDataDirectory;
                 using (var stream = await FileSystem.OpenAppPackageFileAsync(fileName))
                 {
                     using (var reader = new StreamReader(stream))
                     {
-                        using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+                        var lines = reader.ReadToEnd().Split('\n');
+                        foreach (string line in lines)
                         {
-                            csv.Context.RegisterClassMap<CityMapHandler>();
-                            var records = csv.GetRecords<CityModel>();
-                            foreach (var item in records)
+                            try
                             {
-                                Content.Add(item);
+                                CityModel cityModel = new CityModel()
+                                {
+                                    Name = line.Split(';')[0] as string,
+                                    Lat = line.Split(';')[1] as string,
+                                    Lot = line.Split(';')[2].Replace("\r","") as string,
+                                };
+                                Content.Add(cityModel);
                             }
+                            catch{}
                         }
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                System.Diagnostics.Debug.WriteLine(e.Message);
             }
         }
     }

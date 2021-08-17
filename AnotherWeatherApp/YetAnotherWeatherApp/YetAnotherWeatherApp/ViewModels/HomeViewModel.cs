@@ -28,7 +28,16 @@ namespace YetAnotherWeatherApp.ViewModels
             }
         }
 
-        private bool controlShowSearchListIsVisible = false;
+        private bool cityListIsVissible = false;
+        public bool CityListIsVissible
+        {
+            get => cityListIsVissible;
+            set
+            {
+                cityListIsVissible = value;
+                OnPropertyChanged();
+            }
+        }
         private bool dayPickerIsVisible = false;
         public bool DayPickerIsVisible
         {
@@ -39,14 +48,18 @@ namespace YetAnotherWeatherApp.ViewModels
                 OnPropertyChanged();
             }
         }
-        public ICommand ShowSearchList { get; set; }
-        public ICommand OpenWebCommand { get; }
+        public ICommand OpenWebCommand { get; set; }
+        public ICommand ShowCityListIsVissible { get; set; }
+        public ICommand HideCityListIsVissible { get; set; }
         public ICommand ShowDayPicker { get; set; }
         public ICommand HideDayPicker { get; set; }
         public AsyncCommand RefreshWeatherData { get; set; }
 
         public TimeModel TimeModel { get; set; }
         public ObservableCollection<TimeModel> Dates { get; } = new ObservableCollection<TimeModel>();
+
+
+        #region SearchBar
         public ObservableCollection<CityModel> Cities { get; } = new ObservableCollection<CityModel>();
         private ObservableCollection<CityModel> filteredItems;
         public ObservableCollection<CityModel> FilteredItems
@@ -54,7 +67,8 @@ namespace YetAnotherWeatherApp.ViewModels
             get => filteredItems;
             set
             {
-                // Notify property changed
+                filteredItems = value;
+                OnPropertyChanged();
             }
         }
         private string searchTerm;
@@ -63,8 +77,9 @@ namespace YetAnotherWeatherApp.ViewModels
             get => searchTerm;
             set
             {
-                // Notify property changed
+                searchTerm = value;
                 SearchCommand.Execute(searchTerm);
+                OnPropertyChanged();
             }
         }
 
@@ -72,25 +87,38 @@ namespace YetAnotherWeatherApp.ViewModels
         {
             get
             {
+                OnShowCityListIsVissible();
                 return new Command<string>((searchString) =>
                 {
                     FilteredItems = new ObservableCollection<CityModel>(Cities.Where(o => o.Name.ToLower().Contains(searchString.ToLower())));
                 });
             }
         }
+        void OnShowCityListIsVissible()
+        {
+            if (CityListIsVissible is false)
+            {
+                CityListIsVissible = true;
+            }
+        }
+        void OnHideCityListIsVissible()
+        {
+            if (CityListIsVissible is true)
+            {
+                CityListIsVissible = false;
+            }
+        }
+        #endregion
         public HomeViewModel()
         {
             Cities = CityMapHandler.GetCities();
-
-
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://www.yr.no/en"));
-            ShowSearchList = new Command(ControlShowSearchList);
+            ShowCityListIsVissible = new Command(OnShowCityListIsVissible);
+            HideCityListIsVissible = new Command(OnHideCityListIsVissible);
             ShowDayPicker = new Command(OnShowDayPicker);
             HideDayPicker = new Command(OnHideDayPicker);
 
             RefreshWeatherData = new AsyncCommand(OnRefreshWeatherData);
-
-
             TimeModel = new TimeModel()
             {
                 Date = DateTime.Now,
@@ -117,13 +145,7 @@ namespace YetAnotherWeatherApp.ViewModels
             }
         }
 
-        void ControlShowSearchList()
-        {
-            if (controlShowSearchListIsVisible is false)
-            {
-                controlShowSearchListIsVisible = true;
-            }
-        }
+        
         void OnShowDayPicker()
         {
             if (DayPickerIsVisible is false)

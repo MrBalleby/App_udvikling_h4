@@ -29,20 +29,6 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Image BackgroundColor="red" Source="{local:ImageResource YetAnotherWeatherApp.Images.Landscape1.JPG}" Aspect="AspectFill" Grid.RowSpan="5"></Image>
-                    <ListView x:Name="list" Grid.Row="1" 
-                              Grid.RowSpan="4"
-                              ItemsSource="{Binding FilteredItems}"
-                              IsVisible="{Binding controlShowSearchListIsVisible}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <StackLayout>
-                                        <Label Text="{Binding CityModel.Name}"/>
-                                    </StackLayout>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
                     <Frame BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Column="0" Grid.Row="0" CornerRadius="10" Padding="1" Margin="0,5,0,0">
                         <StackLayout>
                             <Grid>
@@ -50,8 +36,37 @@
                                     <ColumnDefinition Width="70*"></ColumnDefinition>
                                     <ColumnDefinition Width="30*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <SearchBar Grid.Row="0"
+                                        Placeholder="Søg efter by"
+                                        SearchCommand="{Binding SearchTerm, Mode=TwoWay}"/>
+                                    <ListView x:Name="list"
+                                                Grid.Row="1"
+                                                VerticalOptions="Start"
+                                                HorizontalOptions="Fill"
+                                                IsVisible="{Binding CityListIsVissible}"
+                                                HeightRequest="300"
+                                                BackgroundColor="White"
+                                                Opacity="0.8"
+                                                ItemsSource="{Binding FilteredItems}">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <StackLayout>
+                                                        <Label Text="{Binding Name}"/>
+                                                    </StackLayout>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+
+                                </Grid>
                                 <SearchBar Grid.Column="0"
-                                           SearchCommand="{Binding searchTerm}"
+                                           SearchCommand="{Binding ShowSearchList}"
                                            Placeholder="Søg efter by"
                                            HorizontalOptions="FillAndExpand"
                                            FontFamily="Helvetica"
@@ -123,7 +138,6 @@
                         </Grid>
                     </Frame>
                 </Grid>
-                
                 <ContentView x:Name="overlay"  
                  AbsoluteLayout.LayoutBounds="1, 1, 1, 1"  
                  AbsoluteLayout.LayoutFlags="All"  
@@ -179,4 +193,4 @@
         </AbsoluteLayout>
 
     </ContentPage.Content>
-    </ContentPage>
+</ContentPage>
