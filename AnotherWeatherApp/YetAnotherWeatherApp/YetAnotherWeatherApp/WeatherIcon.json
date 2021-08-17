@@ -172,7 +172,7 @@
       "Code": "partlycloudy",
       "Description_en": "Partly cloudy",
       "Description_da": "Delvis skyet",
-      "IconImage": "50651-cloudy.json.json"
+      "IconImage": "50651-cloudy.json"
     },
     {
       "Code": "rain",

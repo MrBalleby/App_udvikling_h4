@@ -26,13 +26,13 @@ namespace WeatherDataAccess.Model
             get
             {
                 if (NextHour?.Summary != null)
-                    return NextHour.Summary.SymbolCode;
+                    return NextHour.Summary.SymbolCode.Split('_')[0];
 
                 if (NextSixHours?.Summary != null)
-                    return NextSixHours.Summary.SymbolCode;
+                    return NextSixHours.Summary.SymbolCode.Split('_')[0];
 
                 if (NextTwelveHours?.Summary != null)
-                    return NextTwelveHours.Summary.SymbolCode;
+                    return NextTwelveHours.Summary.SymbolCode.Split('_')[0];
 
                 return string.Empty;
             }
