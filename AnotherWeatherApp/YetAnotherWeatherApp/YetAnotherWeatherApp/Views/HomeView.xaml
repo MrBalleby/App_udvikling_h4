@@ -120,7 +120,7 @@
                                             </DataTemplate>
                                         </ListView.ItemTemplate>
                                     </ListView>
-                                    <Button Text="Gå til YR" 
+                                    <Button Text="MENU" 
                                         Command="{Binding OpenWebCommand}"
                                         Grid.Column="1"
                                         BackgroundColor="#80FFFFFF"

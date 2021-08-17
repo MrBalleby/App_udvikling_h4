@@ -8,21 +8,23 @@
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
-                <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
-                <Setter Property="Shell.ForegroundColor" Value="White" />
-                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.BackgroundColor" Value="Transparent" />
+                <Setter Property="Shell.ForegroundColor" Value="Transparent" />
+                <Setter Property="Shell.TitleColor" Value="Orange" />
                 <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
                 <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
-                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}" />
-                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+                <Setter Property="Shell.TabBarBackgroundColor" Value="Transparent" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="Transparent"/>
                 <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
-                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="ForestGreen"/>
             </Style>
-            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}"/>
         </ResourceDictionary>
     </Shell.Resources>
     <TabBar>
         <ShellContent Title="Home" Route="HomeView" ContentTemplate="{DataTemplate local:HomeView}" />
+        <ShellContent Title="Settings" Route="SettingsView" ContentTemplate="{DataTemplate local:SettingsView}" />
+        <ShellContent Title="Note" Route="NoteView" ContentTemplate="{DataTemplate local:NoteView}" />
     </TabBar>
 
 

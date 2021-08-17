@@ -136,6 +136,9 @@
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
       <Version>4.0.10</Version>
     </PackageReference>
+    <PackageReference Include="SkiaSharp.Views.Forms">
+      <Version>2.80.3</Version>
+    </PackageReference>
     <PackageReference Include="Xam.Plugins.Forms.DeviceOrientation">
       <Version>1.0.1</Version>
     </PackageReference>

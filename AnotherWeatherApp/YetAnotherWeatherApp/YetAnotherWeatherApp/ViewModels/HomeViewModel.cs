@@ -12,6 +12,7 @@ using Xamarin.Essentials;
 using Xamarin.CommunityToolkit.ObjectModel;
 using System.Threading.Tasks;
 using System.Linq;
+using YetAnotherWeatherApp.Views;
 
 namespace YetAnotherWeatherApp.ViewModels
 {
@@ -59,7 +60,7 @@ namespace YetAnotherWeatherApp.ViewModels
         
         public HomeViewModel()
         {
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://www.yr.no/en"));
+            OpenWebCommand = new Command(async () => await Shell.Current.GoToAsync($"//{nameof(SettingsView)}"));
             ShowDayPicker = new Command(OnShowDayPicker);
             HideDayPicker = new Command(OnHideDayPicker);
 

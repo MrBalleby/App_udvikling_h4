@@ -1,18 +1,14 @@
-﻿using DeviceOrientation.Forms.Plugin.Abstractions;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Runtime.CompilerServices;
-using System.Threading;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 using Xamarin.CommunityToolkit.ObjectModel;
-
+using Xamarin.Forms;
 using YetAnotherWeatherApp.Models;
 using YetAnotherWeatherApp.Services;
-using Newtonsoft.Json;
-using System.IO;
-using Xamarin.Essentials;
 
 namespace YetAnotherWeatherApp.ViewModels
 {
