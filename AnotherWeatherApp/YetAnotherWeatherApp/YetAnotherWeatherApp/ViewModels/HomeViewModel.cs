@@ -60,40 +60,8 @@ namespace YetAnotherWeatherApp.ViewModels
 
 
         #region SearchBar
-        public ObservableCollection<CityModel> Cities { get; } = new ObservableCollection<CityModel>();
-        private ObservableCollection<CityModel> filteredItems;
-        public ObservableCollection<CityModel> FilteredItems
-        {
-            get => filteredItems;
-            set
-            {
-                filteredItems = value;
-                OnPropertyChanged();
-            }
-        }
-        private string searchTerm;
-        public string SearchTerm
-        {
-            get => searchTerm;
-            set
-            {
-                searchTerm = value;
-                SearchCommand.Execute(searchTerm);
-                OnPropertyChanged();
-            }
-        }
-
-        public Command SearchCommand
-        {
-            get
-            {
-                OnShowCityListIsVissible();
-                return new Command<string>((searchString) =>
-                {
-                    FilteredItems = new ObservableCollection<CityModel>(Cities.Where(o => o.Name.ToLower().Contains(searchString.ToLower())));
-                });
-            }
-        }
+        
+        
         void OnShowCityListIsVissible()
         {
             if (CityListIsVissible is false)
@@ -111,7 +79,6 @@ namespace YetAnotherWeatherApp.ViewModels
         #endregion
         public HomeViewModel()
         {
-            Cities = CityMapHandler.GetCities();
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://www.yr.no/en"));
             ShowCityListIsVissible = new Command(OnShowCityListIsVissible);
             HideCityListIsVissible = new Command(OnHideCityListIsVissible);

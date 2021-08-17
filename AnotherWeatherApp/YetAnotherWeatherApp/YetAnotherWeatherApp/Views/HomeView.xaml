@@ -29,63 +29,6 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Image BackgroundColor="red" Source="{local:ImageResource YetAnotherWeatherApp.Images.Landscape1.JPG}" Aspect="AspectFill" Grid.RowSpan="5"></Image>
-                    <Frame BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Column="0" Grid.Row="0" CornerRadius="10" Padding="1" Margin="0,5,0,0">
-                        <StackLayout>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="70*"></ColumnDefinition>
-                                    <ColumnDefinition Width="30*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Grid Grid.Column="0">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <SearchBar Grid.Row="0"
-                                        Placeholder="Søg efter by"
-                                        SearchCommand="{Binding SearchTerm, Mode=TwoWay}"/>
-                                    <ListView x:Name="list"
-                                                Grid.Row="1"
-                                                VerticalOptions="Start"
-                                                HorizontalOptions="Fill"
-                                                IsVisible="{Binding CityListIsVissible}"
-                                                HeightRequest="300"
-                                                BackgroundColor="White"
-                                                Opacity="0.8"
-                                                ItemsSource="{Binding FilteredItems}">
-                                        <ListView.ItemTemplate>
-                                            <DataTemplate>
-                                                <ViewCell>
-                                                    <StackLayout>
-                                                        <Label Text="{Binding Name}"/>
-                                                    </StackLayout>
-                                                </ViewCell>
-                                            </DataTemplate>
-                                        </ListView.ItemTemplate>
-                                    </ListView>
-
-                                </Grid>
-                                <SearchBar Grid.Column="0"
-                                           SearchCommand="{Binding ShowSearchList}"
-                                           Placeholder="Søg efter by"
-                                           HorizontalOptions="FillAndExpand"
-                                           FontFamily="Helvetica"
-                                           FontAttributes="Bold"
-                                           FontSize="Medium"/>
-                                <Button Text="Gå til YR" 
-                                        Command="{Binding OpenWebCommand}"
-                                        Grid.Column="1"
-                                        BackgroundColor="#80FFFFFF"
-                                        CornerRadius="20"
-                                        TextColor="Black"
-                                        BorderColor="Black"
-                                        BorderWidth="1"
-                                        FontFamily="Helvetica"
-                                        FontSize="Medium"
-                                        FontAttributes="Bold" HorizontalOptions="End"/>
-                            </Grid>
-                        </StackLayout>
-                    </Frame>
                     <Frame BackgroundColor="Transparent" VerticalOptions="Start" Grid.Column="0" Grid.Row="1" CornerRadius="10"  Padding="10">
                         <StackLayout>
                             <Grid>
@@ -126,7 +69,6 @@
                             </StackLayout>
                         </Frame>
                     </Frame>
-
                     <Frame BackgroundColor="Transparent" VerticalOptions="End" Grid.Column="0" Grid.Row="4">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -136,6 +78,58 @@
                             <Button Text="Hjem" Grid.Column="0" BackgroundColor="#80FFFFFF" CornerRadius="20" TextColor="Black" BorderColor="Black" BorderWidth="1" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Button>
                             <Button Text="Vælg Dag" Grid.Column="1" BackgroundColor="#80FFFFFF" CornerRadius="20" TextColor="Black" BorderColor="Black" BorderWidth="1" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold" Command="{Binding ShowDayPicker}"></Button>
                         </Grid>
+                    </Frame>
+                    <Frame BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Column="0" Grid.Row="0" Grid.RowSpan="5" CornerRadius="10" Padding="1" Margin="0,5,0,0">
+                        <StackLayout>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="70*"></ColumnDefinition>
+                                    <ColumnDefinition Width="30*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <SearchBar x:Name="searchbar"
+                                        Grid.Row="0"
+                                        Placeholder="Søg efter by"
+                                        TextChanged="SearchBar_TextChanged"
+                                        SearchButtonPressed="SearchBar_SearchButtonPressed"
+                                        HorizontalOptions="FillAndExpand"
+                                        FontFamily="Helvetica"
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"/>
+                                <ListView x:Name="citylist"
+                                                Grid.Row="1"
+                                                Grid.ColumnSpan="2"
+                                                VerticalOptions="Start"
+                                                HorizontalOptions="Fill"
+                                                BackgroundColor="White"
+                                                ItemSelected="citylist_ItemSelected"
+                                                Opacity="1">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout>
+                                                    <Label Text="{Binding Name}"/>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                                <Button Text="Gå til YR" 
+                                        Command="{Binding OpenWebCommand}"
+                                        Grid.Column="1"
+                                        BackgroundColor="#80FFFFFF"
+                                        CornerRadius="20"
+                                        TextColor="Black"
+                                        BorderColor="Black"
+                                        BorderWidth="1"
+                                        FontFamily="Helvetica"
+                                        FontSize="Medium"
+                                        FontAttributes="Bold" HorizontalOptions="End"/>
+                            </Grid>
+                        </StackLayout>
                     </Frame>
                 </Grid>
                 <ContentView x:Name="overlay"  
