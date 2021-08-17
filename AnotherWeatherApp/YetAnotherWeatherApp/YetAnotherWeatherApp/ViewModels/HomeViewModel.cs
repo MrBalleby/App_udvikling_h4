@@ -48,58 +48,22 @@ namespace YetAnotherWeatherApp.ViewModels
                 OnPropertyChanged();
             }
         }
-        public ICommand ShowSearchList { get; set; }
-        public ICommand OpenWebCommand { get; }
+        public ICommand OpenWebCommand { get; set; }
         public ICommand ShowDayPicker { get; set; }
         public ICommand HideDayPicker { get; set; }
         public AsyncCommand RefreshWeatherData { get; set; }
 
         public TimeModel TimeModel { get; set; }
         public ObservableCollection<TimeModel> Dates { get; } = new ObservableCollection<TimeModel>();
-        public ObservableCollection<CityModel> Cities { get; } = new ObservableCollection<CityModel>();
-        private ObservableCollection<CityModel> filteredItems;
-        public ObservableCollection<CityModel> FilteredItems
-        {
-            get => filteredItems;
-            set
-            {
-                // Notify property changed
-            }
-        }
-        private string searchTerm;
-        public string SearchTerm
-        {
-            get => searchTerm;
-            set
-            {
-                // Notify property changed
-                SearchCommand.Execute(searchTerm);
-            }
-        }
 
-        public Command SearchCommand
-        {
-            get
-            {
-                return new Command<string>((searchString) =>
-                {
-                    FilteredItems = new ObservableCollection<CityModel>(Cities.Where(o => o.Name.ToLower().Contains(searchString.ToLower())));
-                });
-            }
-        }
+        
         public HomeViewModel()
         {
-            Cities = CityMapHandler.GetCities();
-
-
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://www.yr.no/en"));
-            ShowSearchList = new Command(ControlShowSearchList);
             ShowDayPicker = new Command(OnShowDayPicker);
             HideDayPicker = new Command(OnHideDayPicker);
 
             RefreshWeatherData = new AsyncCommand(OnRefreshWeatherData);
-
-
             TimeModel = new TimeModel()
             {
                 Date = DateTime.Now,
@@ -133,13 +97,7 @@ namespace YetAnotherWeatherApp.ViewModels
             }
         }
 
-        void ControlShowSearchList()
-        {
-            if (controlShowSearchListIsVisible is false)
-            {
-                controlShowSearchListIsVisible = true;
-            }
-        }
+        
         void OnShowDayPicker()
         {
             if (DayPickerIsVisible is false)
