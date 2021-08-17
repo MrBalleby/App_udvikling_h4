@@ -28,16 +28,7 @@ namespace YetAnotherWeatherApp.ViewModels
             }
         }
 
-        private bool cityListIsVissible = false;
-        public bool CityListIsVissible
-        {
-            get => cityListIsVissible;
-            set
-            {
-                cityListIsVissible = value;
-                OnPropertyChanged();
-            }
-        }
+       
         private bool dayPickerIsVisible = false;
         public bool DayPickerIsVisible
         {
@@ -49,8 +40,6 @@ namespace YetAnotherWeatherApp.ViewModels
             }
         }
         public ICommand OpenWebCommand { get; set; }
-        public ICommand ShowCityListIsVissible { get; set; }
-        public ICommand HideCityListIsVissible { get; set; }
         public ICommand ShowDayPicker { get; set; }
         public ICommand HideDayPicker { get; set; }
         public AsyncCommand RefreshWeatherData { get; set; }
@@ -58,30 +47,10 @@ namespace YetAnotherWeatherApp.ViewModels
         public TimeModel TimeModel { get; set; }
         public ObservableCollection<TimeModel> Dates { get; } = new ObservableCollection<TimeModel>();
 
-
-        #region SearchBar
         
-        
-        void OnShowCityListIsVissible()
-        {
-            if (CityListIsVissible is false)
-            {
-                CityListIsVissible = true;
-            }
-        }
-        void OnHideCityListIsVissible()
-        {
-            if (CityListIsVissible is true)
-            {
-                CityListIsVissible = false;
-            }
-        }
-        #endregion
         public HomeViewModel()
         {
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://www.yr.no/en"));
-            ShowCityListIsVissible = new Command(OnShowCityListIsVissible);
-            HideCityListIsVissible = new Command(OnHideCityListIsVissible);
             ShowDayPicker = new Command(OnShowDayPicker);
             HideDayPicker = new Command(OnHideDayPicker);
 
