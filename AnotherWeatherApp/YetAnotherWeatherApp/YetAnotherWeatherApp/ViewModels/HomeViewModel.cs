@@ -12,11 +12,13 @@ using Xamarin.Essentials;
 using Xamarin.CommunityToolkit.ObjectModel;
 using System.Threading.Tasks;
 using System.Linq;
+using static YetAnotherWeatherApp.Services.DeviceOrientationHandler;
 
 namespace YetAnotherWeatherApp.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
+        public Orientation OrientationMode { get { return this.orientation; } }
         private WeatherDataAccess.Model.InstantDetails currentWeatherDetails;
         public WeatherDataAccess.Model.InstantDetails CurrentWeatherDetails
         {
@@ -50,6 +52,7 @@ namespace YetAnotherWeatherApp.ViewModels
         
         public HomeViewModel()
         {
+            Orientation orientation = OrientationMode;
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://www.yr.no/en"));
             ShowDayPicker = new Command(OnShowDayPicker);
             HideDayPicker = new Command(OnHideDayPicker);

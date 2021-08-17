@@ -185,6 +185,5 @@
                 </ContentView>
             </AbsoluteLayout>
         </AbsoluteLayout>
-
     </ContentPage.Content>
 </ContentPage>
