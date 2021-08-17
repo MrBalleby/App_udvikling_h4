@@ -1,0 +1,250 @@
+{
+  "WhetherIconList": [
+    {
+      "Code": "clearsky",
+      "Description_en": "Clear sky",
+      "Description_da": "Skyfri",
+      "IconImage":  "50649-sunny.json"
+    },
+    {
+      "Code": "cloudy",
+      "Description_en": "Cloudy",
+      "Description_da": "Skyet",
+      "IconImage": "50649-sunny.json"
+    },
+    {
+      "Code": "fair",
+      "Description_en": "Fair",
+      "Description_da": "En smule skyer",
+      "IconImage": "50649-sunny.json"
+    },
+    {
+      "Code": "fog",
+      "Description_en": "Fog",
+      "Description_da": "Tåget",
+      "IconImage": "50666-smog.json"
+    },
+    {
+      "Code": "hevayrain",
+      "Description_en": "Heavy rain",
+      "Description_da": "Kraftig regn",
+      "IconImage": "50656-heavy-rain.json"
+    },
+    {
+      "Code": "heavyrainandthunder",
+      "Description_en": "Heavy rain and thunder",
+      "Description_da": "Kriftig regn med torden",
+      "IconImage": "50657-thunderstorm.json"
+    },
+    {
+      "Code": "heavyrainshowers",
+      "Description_en": "Heavy rain showers",
+      "Description_da": "Kraftig skybrud",
+      "IconImage": "50656-heavy-rain.json"
+    },
+    {
+      "Code": "heavyrainshowersandthunder",
+      "Description_en": "Heavy rain showers and thunder",
+      "Description_da": "Kraftig skybrud med torden",
+      "IconImage": "50657-thunderstorm.json"
+    },
+    {
+      "Code": "heavysleet",
+      "Description_en": "Heavy sleet",
+      "Description_da": "Kraftig slud",
+      "IconImage": "50663-sleet.json"
+    },
+    {
+      "Code": "heavysleetandthunder",
+      "Description_en": "Heavy sleet and thunder",
+      "Description_da": "Kraftig slud med torden",
+      "IconImage": "50657-thunderstorm.json"
+    },
+    {
+      "Code": "heavysleetshowers",
+      "Description_en": "Heavy sleet showers",
+      "Description_da": "Kraftig skybrud med slud",
+      "IconImage": "50663-sleet.json"
+    },
+    {
+      "Code": "heavysleetshowersandthunder",
+      "Description_en": "Heavy sleet showers and thunder",
+      "Description_da": "Kraftig skybrud med slud og torden",
+      "IconImage": "50657-thunderstorm.json"
+    },
+    {
+      "Code": "heavysnow",
+      "Description_en": "Heavy snow",
+      "Description_da": "Kraftig sne",
+      "IconImage": "50662-heavy-snow.json"
+    },
+    {
+      "Code": "heavysnowandthunder",
+      "Description_en": "Heavy snow and thunder",
+      "Description_da": "Kraftig sne med torden",
+      "IconImage": "50657-thunderstorm.json"
+    },
+    {
+      "Code": "heavysnowshowers",
+      "Description_en": "Heavy snow showers",
+      "Description_da": "Kraftig snebrud",
+      "IconImage": "50662-heavy-snow.json"
+    },
+    {
+      "Code": "heavysnowshowersandthunder",
+      "Description_en": "Heavy snow showers and thunder",
+      "Description_da": "Kraftig snebrud med torden",
+      "IconImage": "50657-thunderstorm.json"
+    },
+    {
+      "Code": "lightrain",
+      "Description_en": "Light rain",
+      "Description_da": "Let regn",
+      "IconImage": "50654-light-rain.json"
+    },
+    {
+      "Code": "lightrainandthunder",
+      "Description_en": "Light rain and thunder",
+      "Description_da": "Let regn med torden",
+      "IconImage": "50657-thunderstorm.json"
+    },
+    {
+      "Code": "lightrainshowers",
+      "Description_en": "Light rain showers",
+      "Description_da": "Let skybrud",
+      "IconImage": "50654-light-rain.json"
+    },
+    {
+      "Code": "lightrainshowersandthunder",
+      "Description_en": "Light rain showers and thunder",
+      "Description_da": "Let skybrud med torden",
+      "IconImage": "50657-thunderstorm.json"
+    },
+    {
+      "Code": "lightsleet",
+      "Description_en": "Light sleet",
+      "Description_da": "Let slud",
+      "IconImage": "50663-sleet.json"
+    },
+    {
+      "Code": "lightsleetandthunder",
+      "Description_en": "Light sleet and thunder",
+      "Description_da": "Let slud med torden",
+      "IconImage": "50657-thunderstorm.json"
+    },
+    {
+      "Code": "lightsleetshowers",
+      "Description_en": "Light sleet showers",
+      "Description_da": "Let sludbrud",
+      "IconImage": "50663-sleet.json"
+    },
+    {
+      "Code": "lightsnow",
+      "Description_en": "Light snow",
+      "Description_da": "Let sne",
+      "IconImage": "50654-light-rain.json"
+    },
+    {
+      "Code": "lightsnowandthunder",
+      "Description_en": "Light snow and thunder",
+      "Description_da": "Let sne med torden",
+      "IconImage": "50657-thunderstorm.json"
+    },
+    {
+      "Code": "lightsnowshowers",
+      "Description_en": "Light snow showers",
+      "Description_da": "Let slud med torden",
+      "IconImage": "50657-thunderstorm.json"
+    },
+    {
+      "Code": "lightssleetshowersandthunder",
+      "Description_en": "Light sleet showers and thunder",
+      "Description_da": "Let slud med torden",
+      "IconImage": "50657-thunderstorm.json"
+    },
+    {
+      "Code": "lightssnowshowersandthunder",
+      "Description_en": "Light snow showers and thunder",
+      "Description_da": "Let snebrud med torden",
+      "IconImage": "50657-thunderstorm.json"
+    },
+    {
+      "Code": "partlycloudy",
+      "Description_en": "Partly cloudy",
+      "Description_da": "Delvis skyet",
+      "IconImage": "50651-cloudy.json.json"
+    },
+    {
+      "Code": "rain",
+      "Description_en": "Rain",
+      "Description_da": "Regn",
+      "IconImage": "50655-moderate-rain.json"
+    },
+    {
+      "Code": "rainandthunder",
+      "Description_en": "Rain and thunder",
+      "Description_da": "Regn og torden",
+      "IconImage": "50657-thunderstorm.json"
+    },
+    {
+      "Code": "rainshowers",
+      "Description_en": "Rain showers",
+      "Description_da": "Skybrud",
+      "IconImage": "50656-heavy-rain.json"
+    },
+    {
+      "Code": "rainshowersandthunder",
+      "Description_en": "Rain showers and thunder",
+      "Description_da": "Skybrud med torden",
+      "IconImage": "50657-thunderstorm.json"
+    },
+    {
+      "Code": "sleet",
+      "Description_en": "Sleet",
+      "Description_da": "Slud",
+      "IconImage": "50663-sleet.json"
+    },
+    {
+      "Code": "sleetandthunder",
+      "Description_en": "Sleet and thunder",
+      "Description_da": "Slud med torden",
+      "IconImage": "50657-thunderstorm.json"
+    },
+    {
+      "Code": "sleetshowers",
+      "Description_en": "Sleet showers",
+      "Description_da": "Sludbrud",
+      "IconImage": "50663-sleet.json"
+    },
+    {
+      "Code": "sleetshowersandthunder",
+      "Description_en": "Sleet showers and thunder",
+      "Description_da": "Sludbrud med torden",
+      "IconImage": "50657-thunderstorm.json"
+    },
+    {
+      "Code": "snow",
+      "Description_en": "Snow",
+      "Description_da": "Sne",
+      "IconImage": "50661-moderate-snow.json"
+    },
+    {
+      "Code": "snowandthunder",
+      "Description_en": "Snow and thunder",
+      "Description_da": "Sne med torden",
+      "IconImage": "50657-thunderstorm.json"
+    },
+    {
+      "Code": "snowshowers",
+      "Description_en": "Snow showers",
+      "Description_da": "Snebrud",
+      "IconImage": "50662-heavy-snow.json"
+    },
+    {
+      "Code": "snowshowersandthunder",
+      "Description_en": "Snow showers and thunder",
+      "Description_da": "Snebrud med torden",
+      "IconImage": "50657-thunderstorm.json"
+    }
+  ]
+}

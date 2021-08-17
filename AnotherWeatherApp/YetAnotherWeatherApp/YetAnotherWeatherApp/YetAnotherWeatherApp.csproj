@@ -22,6 +22,7 @@
     <None Remove="Images\Spring3.jpg" />
     <None Remove="Images\Spring4.jpg" />
     <None Remove="Images\Thunder1.png" />
+    <None Remove="WeatherIcon.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -58,6 +59,7 @@
     <EmbeddedResource Include="Images\Spring3.jpg" />
     <EmbeddedResource Include="Images\Spring4.jpg" />
     <EmbeddedResource Include="Images\Thunder1.png" />
+    <EmbeddedResource Include="WeatherIcon.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -90,11 +92,5 @@
     <EmbeddedResource Update="Views\DailyWeatherSummaryView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="WeatherIcon.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 </Project>
