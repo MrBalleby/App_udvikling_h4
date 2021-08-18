@@ -79,8 +79,8 @@
                                     <ColumnDefinition Width="30*"></ColumnDefinition>
                                     <ColumnDefinition Width="70*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Button Text="Hjem" Grid.Column="0" BackgroundColor="#80FFFFFF" CornerRadius="20" TextColor="Black" BorderColor="Black" BorderWidth="1" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Button>
-                                <Button Text="Vælg Dag" Grid.Column="1" BackgroundColor="#80FFFFFF" CornerRadius="20" TextColor="Black" BorderColor="Black" BorderWidth="1" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold" Command="{Binding ShowDayPicker}"></Button>
+                                <Button Text="Hjem" Grid.Column="0" BackgroundColor="#80FFFFFF" CornerRadius="20" TextColor="White" BorderColor="Black" BorderWidth="1" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Button>
+                                <Button Text="Vælg Dag" Grid.Column="1" BackgroundColor="#80FFFFFF" CornerRadius="20" TextColor="White" BorderColor="Black" BorderWidth="1" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold" Command="{Binding ShowDayPicker}"></Button>
                             </Grid>
                         </Frame>
                         <Frame BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Column="0" Grid.Row="0" Grid.RowSpan="5" CornerRadius="10" Padding="1" Margin="0,5,0,0">
@@ -100,6 +100,7 @@
                                         TextChanged="SearchBar_TextChanged"
                                         SearchButtonPressed="SearchBar_SearchButtonPressed"
                                         HorizontalOptions="FillAndExpand"
+                                        TextColor="White"
                                         FontFamily="Helvetica"
                                         FontAttributes="Bold"
                                         FontSize="Medium"/>
@@ -126,8 +127,8 @@
                                         Grid.Column="1"
                                         BackgroundColor="#80FFFFFF"
                                         CornerRadius="20"
-                                        TextColor="Black"
-                                        BorderColor="Black"
+                                        TextColor="White"
+                                        BorderColor="White"
                                         BorderWidth="1"
                                         FontFamily="Helvetica"
                                         FontSize="Medium"

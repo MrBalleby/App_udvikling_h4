@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,9 +33,9 @@ namespace YetAnotherWeatherApp.Views
         public DailyWeatherSummaryView()
         {
             InitializeComponent();
-
             DateWeatherSummaryView.ItemsSource = dailyWeatherSummaries;
 
+            LoadWeatherIconList = new AsyncCommand(OnLoadWeatherIconList);
             GetDataFromApi = new AsyncCommand(OnGetDataFromApi);
 
             dailyWeatherSummaries.Add(new DailyWeatherSummary { Date = DateTime.Today, AirTemperature = GetRandomDouble(5, 40), IconName = RandomWeather() });
@@ -50,9 +52,35 @@ namespace YetAnotherWeatherApp.Views
             var midDayResults = results.Properties.Timeseries.Where(ts => ts.Time.TimeOfDay == new TimeSpan(12, 0, 0)).ToList();
             foreach (var item in midDayResults)
             {
-                dailyWeatherSummaries.Add(new DailyWeatherSummary { AirTemperature = item.Data.Instant.Details.AirTemperature, Date = item.Time, IconName = item.Data.NextSixHours.Summary.SymbolCode });
+                string iconName = item.Data.NextSixHours.Summary.SymbolCode;
+                if (weatherIconList == null || weatherIconList.Count == 0)
+                    await LoadWeatherIconList.ExecuteAsync();
+                if (weatherIconList != null)
+                {
+                    currentWeatherIconModel = weatherIconList.First(wi => wi.Code == iconName);
+                    dailyWeatherSummaries.Add(new DailyWeatherSummary { AirTemperature = item.Data.Instant.Details.AirTemperature, Date = item.Time, IconName =  currentWeatherIconModel.IconImage});
+                }
             }
         }
+        WeatherIconModel currentWeatherIconModel = new WeatherIconModel { Description_da = "Sikkert godt vejr", Description_en = "Probably nice weather" };
+        public AsyncCommand LoadWeatherIconList { get; set; }
+
+        async Task OnLoadWeatherIconList()
+        {
+            string filename = "WeatherIcon.json";
+
+            using (var stream = await Xamarin.Essentials.FileSystem.OpenAppPackageFileAsync(filename))
+            {
+                using (var reader = new StreamReader(stream))
+                {
+                    var fileContents = await reader.ReadToEndAsync();
+                    var result = JsonConvert.DeserializeObject<weatherIconList>(fileContents);
+                    weatherIconList = result.WhetherIconList;
+                }
+            }
+        }
+
+        List<WeatherIconModel> weatherIconList = new List<WeatherIconModel>();
 
         void SetDailyWeatherFromTimeSeries(List<WeatherDataAccess.Model.TimeData> timeDatas)
         {

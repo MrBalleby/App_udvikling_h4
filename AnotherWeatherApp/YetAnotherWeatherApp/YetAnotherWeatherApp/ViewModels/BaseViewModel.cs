@@ -71,7 +71,7 @@ namespace YetAnotherWeatherApp.ViewModels
                 {
                     var fileContents = await reader.ReadToEndAsync();
 
-                    var result = JsonConvert.DeserializeObject<WeatherIconList>(fileContents);
+                    var result = JsonConvert.DeserializeObject<weatherIconList>(fileContents);
                     WeatherIconList = result.WhetherIconList;
                 }
             }

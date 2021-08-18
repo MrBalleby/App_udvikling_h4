@@ -4,7 +4,7 @@ using System.Text;
 
 namespace YetAnotherWeatherApp.Models
 {
-    public class WeatherIconList
+    public class weatherIconList
     {
         public List<WeatherIconModel> WhetherIconList { get; set; }
     }
