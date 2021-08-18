@@ -50,19 +50,20 @@ namespace YetAnotherWeatherApp.Views
             var results = await new HTTPACCESS().GetWeatherFromLocationAsync(56.4520, 9.3963);
 
             var midDayResults = results.Properties.Timeseries.Where(ts => ts.Time.TimeOfDay == new TimeSpan(12, 0, 0)).ToList();
+            if (weatherIconList == null || weatherIconList.Count == 0)
+                await LoadWeatherIconList.ExecuteAsync();
+            
             foreach (var item in midDayResults)
             {
-                string iconName = item.Data.NextSixHours.Summary.SymbolCode;
-                if (weatherIconList == null || weatherIconList.Count == 0)
-                    await LoadWeatherIconList.ExecuteAsync();
-                if (weatherIconList != null)
+                string iconName = item.Data.NextSixHours.Summary.SymbolCode.Split('_')[0];
+                if (currentWeatherIconModel != null)
                 {
                     currentWeatherIconModel = weatherIconList.First(wi => wi.Code == iconName);
                     dailyWeatherSummaries.Add(new DailyWeatherSummary { AirTemperature = item.Data.Instant.Details.AirTemperature, Date = item.Time, IconName =  currentWeatherIconModel.IconImage});
                 }
             }
         }
-        WeatherIconModel currentWeatherIconModel = new WeatherIconModel { Description_da = "Sikkert godt vejr", Description_en = "Probably nice weather" };
+        WeatherIconModel currentWeatherIconModel = new WeatherIconModel {};
         public AsyncCommand LoadWeatherIconList { get; set; }
 
         async Task OnLoadWeatherIconList()

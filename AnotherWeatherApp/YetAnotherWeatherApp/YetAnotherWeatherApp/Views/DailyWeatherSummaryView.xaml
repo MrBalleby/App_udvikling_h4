@@ -4,7 +4,7 @@
              x:Class="YetAnotherWeatherApp.Views.DailyWeatherSummaryView">
   <ContentView.Content>
       <StackLayout>
-            <ListView x:Name="DateWeatherSummaryView">
+            <ListView x:Name="DateWeatherSummaryView" RowHeight="60">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -14,17 +14,18 @@
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="1*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label FontFamily="Helvetica" HorizontalOptions="End" TextColor="White" FontSize="Large" FontAttributes="Bold" Text="{Binding Date, StringFormat='{0:MMM, dd}'}"/>
+                                <Label FontFamily="Helvetica" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" TextColor="White" FontSize="Large" FontAttributes="Bold" Text="{Binding Date, StringFormat='{0:MMM, dd}'}"/>
                                 <forms:AnimationView x:Name="animationView"
                                                      Grid.Column="1"
                                                      BackgroundColor="Transparent"
                                                      AnimationSource="AssetOrBundle"
                                                      Animation="{Binding IconName}"
-                                                     VerticalOptions="FillAndExpand"
-                                                     HorizontalOptions="FillAndExpand"
+                                                     VerticalOptions="Start"
+                                                     HorizontalOptions="Start"
+                                                     HeightRequest="60"
                                                      RepeatMode="Infinite"
                                                      AutoPlay="True"/>
-                                <Label FontFamily="Helvetica" Grid.Column="2" TextColor="White" FontSize="Large" FontAttributes="Bold" Text="{Binding AirTemperature, StringFormat='{0}°'}"/>
+                                <Label FontFamily="Helvetica" VerticalOptions="CenterAndExpand" Grid.Column="2" TextColor="White" FontSize="Large" FontAttributes="Bold" Text="{Binding AirTemperature, StringFormat='{0}°'}"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
