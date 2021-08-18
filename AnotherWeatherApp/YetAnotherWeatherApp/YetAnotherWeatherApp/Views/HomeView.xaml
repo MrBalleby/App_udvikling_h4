@@ -10,7 +10,8 @@
              mc:Ignorable="d"
              x:Class="YetAnotherWeatherApp.Views.HomeView"
              x:Name="HomePage"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="True"
+             Shell.TabBarIsVisible="False">
     <ContentPage.Behaviors>
         <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding LoadWeatherIconList }"/>
         <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding RefreshWeatherData }"/>

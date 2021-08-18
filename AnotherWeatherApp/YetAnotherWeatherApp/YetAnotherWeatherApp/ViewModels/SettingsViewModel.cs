@@ -9,16 +9,22 @@ namespace YetAnotherWeatherApp.ViewModels
 {
     public class SettingsViewModel
     {
-        public Command LoginCommand { get; }
+        public Command DrawCommand { get; }
+        public Command HomeCommand { get; }
 
         public SettingsViewModel()
         {
-            LoginCommand = new Command(OnDrawClicked);
+            DrawCommand = new Command(OnDrawClicked);
+            HomeCommand = new Command(OnHomeClicked);
         }
 
         private async void OnDrawClicked(object obj)
         {
             await Shell.Current.GoToAsync($"//{nameof(NoteView)}");
+        }
+        private async void OnHomeClicked(object obj)
+        {
+            await Shell.Current.GoToAsync($"//{nameof(HomeView)}");
         }
     }
 }

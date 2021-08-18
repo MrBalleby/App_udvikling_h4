@@ -2,9 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:views="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
-             x:Class="YetAnotherWeatherApp.Views.NoteView">
+             x:Class="YetAnotherWeatherApp.Views.NoteView"
+             Shell.NavBarIsVisible="True"
+             Shell.TabBarIsVisible="False">
     <ContentPage.Content>
         <Grid>
+            <Button VerticalOptions="Center" Text="Tegneblok" Command="{Binding HomeCommand}"/>
             <views:SKCanvasView PaintSurface="OnPainting"
                             EnableTouchEvents="True" Touch="OnTouch" />
 

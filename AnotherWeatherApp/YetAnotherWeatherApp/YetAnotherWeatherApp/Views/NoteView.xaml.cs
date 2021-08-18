@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using YetAnotherWeatherApp.ViewModels;
 
 namespace YetAnotherWeatherApp.Views
 {
@@ -20,6 +21,7 @@ namespace YetAnotherWeatherApp.Views
         public NoteView()
         {
             InitializeComponent();
+			this.BindingContext = new NoteViewModel();
 			base.OnAppearing();
         }
 
@@ -41,16 +43,16 @@ namespace YetAnotherWeatherApp.Views
 			{
 				IsAntialias = true,
 				Style = SKPaintStyle.Fill,
-				Color = SKColors.Blue,
-				TextSize = 80
+				Color = SKColors.Gold,
+				TextSize = 60
 			};
-			canvas.DrawText("Tegneblokken", 60, 160 + 80, textPaint);
+			canvas.DrawText("Tegneblokken", 60, 60, textPaint);
 
 			var touchPathStroke = new SKPaint
 			{
 				IsAntialias = true,
 				Style = SKPaintStyle.Stroke,
-				Color = SKColors.Purple,
+				Color = SKColors.Green,
 				StrokeWidth = 5
 			};
 			foreach (var touchPath in temporaryPaths)

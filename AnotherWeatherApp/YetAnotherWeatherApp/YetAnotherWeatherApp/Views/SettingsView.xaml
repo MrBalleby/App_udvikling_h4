@@ -5,10 +5,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="YetAnotherWeatherApp.Views.SettingsView"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="True"
+             Shell.TabBarIsVisible="False">
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding DrawCommand}"/>
+            <Button VerticalOptions="Center" Text="Hjem" Command="{Binding HomeCommand}"/>
+            <Button VerticalOptions="Center" Text="Tegneblok" Command="{Binding DrawCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
