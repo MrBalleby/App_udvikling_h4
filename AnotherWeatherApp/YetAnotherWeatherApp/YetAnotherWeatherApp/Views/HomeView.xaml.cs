@@ -19,26 +19,42 @@ namespace YetAnotherWeatherApp.Views
         public HomeView()
         {
             InitializeComponent();
+
             this.BindingContext = new HomeViewModel();
-            base.OnAppearing();
             citylist.IsVisible = false;
         }
 
         //Runs when the device starts, or resume the application
-        protected override void OnAppearing() 
+        protected override void OnAppearing()
         {
-            DisplayOrientation orientation = DeviceDisplay.MainDisplayInfo.Orientation;
-            if (orientation == Xamarin.Essentials.DisplayOrientation.Landscape)
+            HomePage.SizeChanged += HomePage_SizeChanged;
+        }
+
+        private void HomePage_SizeChanged(object sender, EventArgs e)
+        {
+            if (DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Landscape)
             {
-                outerstack.Orientation = StackOrientation.Horizontal;
-                innerframe.BackgroundColor = Color.Black;
+                try
+                {
+                    searchbarframe.BackgroundColor = Color.Red;
+                
+                }
+                catch (Exception)
+                {
+
+                }
             }
             else
             {
-                outerstack.Orientation = StackOrientation.Vertical;
-                innerframe.BackgroundColor = Color.Transparent;
+                try
+                {
+                    searchbarframe.BackgroundColor = Color.Transparent;
+                }
+                catch (Exception)
+                {
+                }
             }
-    }
+        }
 
 
         //Dynamic ItemList for city search

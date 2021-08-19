@@ -21,7 +21,7 @@
             <ScrollView>
                 <AbsoluteLayout x:Name="ViewLayout">
                 <AbsoluteLayout x:Name="ViewControls" AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Transparent">
-                    <Grid AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,1,1,1">
+                    <Grid x:Name="outergrid" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,1,1,1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height=".3*"></RowDefinition>
                             <RowDefinition Height="2*"></RowDefinition>
@@ -32,10 +32,10 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <Image BackgroundColor="Transparent" Source="{local:ImageResource YetAnotherWeatherApp.Images.Landscape1.JPG}" Aspect="AspectFill" Grid.RowSpan="5"></Image>
-                        <Frame x:Name="innerframe" BackgroundColor="Transparent" VerticalOptions="Start" Grid.Column="0" Grid.Row="1" CornerRadius="10"  Padding="10">
+                        <Image x:Name="bg_image" BackgroundColor="Transparent" Source="{local:ImageResource YetAnotherWeatherApp.Images.Landscape1.JPG}" Aspect="AspectFill" Grid.RowSpan="5"></Image>
+                        <Frame x:Name="currentweatherframe" BackgroundColor="Transparent" VerticalOptions="Start" Grid.Column="0" Grid.Row="1" CornerRadius="10"  Padding="10">
                             <StackLayout>
-                                <Grid>
+                                <Grid x:Name="currentweathergrid">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height=".8*"></RowDefinition>
                                         <RowDefinition Height="3*"></RowDefinition>
@@ -47,11 +47,11 @@
                                         <ColumnDefinition Width="1.4*"></ColumnDefinition>
                                         <ColumnDefinition Width="*"></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding TimeModel.ThisDayConverted}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
-                                    <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentWeatherDetails.AirTemperature, StringFormat='{0}°'}" FontSize="Header" FontFamily="Helvetica" FontAttributes="Bold"></Label>
-                                    <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentWeatherIconModel.Description_da}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
-                                    <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentWeatherDetails.WindSpeed, StringFormat='{}Vind | {0} m/s'}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
-                                    <Label TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentWeatherDetails.RelativeHumidity, StringFormat='Fugtighed | {0}%'}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
+                                    <Label x:Name="cwg_label1" TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding TimeModel.ThisDayConverted}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
+                                    <Label x:Name="cwg_label2" TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentWeatherDetails.AirTemperature, StringFormat='{0}°'}" FontSize="Header" FontFamily="Helvetica" FontAttributes="Bold"></Label>
+                                    <Label x:Name="cwg_label3" TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentWeatherIconModel.Description_da}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
+                                    <Label x:Name="cwg_label4" TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentWeatherDetails.WindSpeed, StringFormat='{}Vind | {0} m/s'}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
+                                    <Label x:Name="cwg_label5" TextColor="#FFF" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding CurrentWeatherDetails.RelativeHumidity, StringFormat='Fugtighed | {0}%'}" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold"></Label>
                                     <forms:AnimationView x:Name="animationView"
                                                      Grid.Column="1"
                                                      Grid.Row="0"
@@ -66,14 +66,14 @@
                                 </Grid>
                             </StackLayout>
                         </Frame>
-                        <Frame BackgroundColor="Transparent" VerticalOptions="Start" Grid.Column="0" Grid.Row="2" Grid.RowSpan="2">
+                        <Frame x:Name="dailyweatherframe" BackgroundColor="Transparent" VerticalOptions="Start" Grid.Column="0" Grid.Row="2" Grid.RowSpan="2">
                             <Frame BackgroundColor="#a0000000" CornerRadius="10">
                                 <StackLayout>
                                     <views:DailyWeatherSummaryView/>
                                 </StackLayout>
                             </Frame>
                         </Frame>
-                        <Frame BackgroundColor="Transparent" VerticalOptions="End" Grid.Column="0" Grid.Row="4">
+                        <Frame x:Name="buttonframe" BackgroundColor="Transparent" VerticalOptions="End" Grid.Column="0" Grid.Row="4">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="30*"></ColumnDefinition>
@@ -83,7 +83,7 @@
                                 <Button Text="Vælg Dag" Grid.Column="1" BackgroundColor="#80FFFFFF" CornerRadius="20" TextColor="White" BorderColor="Black" BorderWidth="1" FontFamily="Helvetica" FontSize="Large" FontAttributes="Bold" Command="{Binding ShowDayPicker}"></Button>
                             </Grid>
                         </Frame>
-                        <Frame BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Column="0" Grid.Row="0" Grid.RowSpan="5" CornerRadius="10" Padding="1" Margin="0,5,0,0">
+                        <Frame x:Name="searchbarframe" BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="Start" Grid.Column="0" Grid.Row="0" Grid.RowSpan="5" CornerRadius="10" Padding="1" Margin="0,5,0,0">
                             <StackLayout>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
