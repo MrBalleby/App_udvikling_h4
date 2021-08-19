@@ -30,10 +30,12 @@ namespace YetAnotherWeatherApp.Views
             if (orientation == Xamarin.Essentials.DisplayOrientation.Landscape)
             {
                 outerstack.Orientation = StackOrientation.Horizontal;
+                innerframe.BackgroundColor = Color.Black;
             }
             else
             {
                 outerstack.Orientation = StackOrientation.Vertical;
+                innerframe.BackgroundColor = Color.Transparent;
             }
     }
 
