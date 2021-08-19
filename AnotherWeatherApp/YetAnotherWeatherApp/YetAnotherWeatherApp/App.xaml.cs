@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using WeatherDataAccess.Data;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using YetAnotherWeatherApp.Services;
@@ -13,14 +15,24 @@ namespace YetAnotherWeatherApp
         public App()
         {
             InitializeComponent();
-
+            AppActions.OnAppAction += AppActions_OnAppAction;
             DependencyService.Register<MockDataStore>();
             DependencyService.Register<IWeatherService, WeatherService>();
             MainPage = new AppShell();
         }
 
-        protected override void OnStart()
+        protected override async void OnStart()
         {
+            try
+            {
+                await AppActions.SetAsync(
+                    new AppAction("app_info", "App Info", icon: "app_info_action_icon"),
+                    new AppAction("battery_info", "Battery Info"));
+            }
+            catch (FeatureNotSupportedException ex)
+            {
+                Debug.WriteLine("App Actions not supported");
+            }
         }
 
         protected override void OnSleep()
@@ -30,5 +42,19 @@ namespace YetAnotherWeatherApp
         protected override void OnResume()
         {
         }
+
+        void AppActions_OnAppAction(object sender, AppActionEventArgs e)
+        {
+            if (Application.Current != this && Application.Current is App app)
+            {
+                AppActions.OnAppAction -= app.AppActions_OnAppAction;
+                return;
+            }
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await Shell.Current.GoToAsync($"//{e.AppAction.Id}");
+            });
+        }
+
     }
 }
