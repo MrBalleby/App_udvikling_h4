@@ -69,7 +69,7 @@ namespace YetAnotherWeatherApp.Views
 		{
 			try
 			{
-				var duration = TimeSpan.FromSeconds(1);
+				var duration = TimeSpan.FromMilliseconds(1);
 				Vibration.Vibrate(duration);
 			}
 			catch (FeatureNotSupportedException ex)
