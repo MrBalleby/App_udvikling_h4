@@ -8,7 +8,7 @@ using DeviceOrientation.Forms.Plugin.Droid;
 
 namespace YetAnotherWeatherApp.Droid
 {
-    [Activity(Label = "YetAnotherWeatherApp", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.FullUser)]
+    [Activity(Label = "WEATHER", Icon = "@drawable/applogo", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.FullUser)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
