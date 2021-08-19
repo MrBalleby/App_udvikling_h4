@@ -13,11 +13,14 @@ using Xamarin.CommunityToolkit.ObjectModel;
 using System.Threading.Tasks;
 using System.Linq;
 using YetAnotherWeatherApp.Views;
+using WeatherDataAccess.Data;
 
 namespace YetAnotherWeatherApp.ViewModels
 {
     public class HomeViewModel : BaseViewModel
     {
+        private readonly IWeatherService weatherService;
+
         private WeatherDataAccess.Model.InstantDetails currentWeatherDetails;
         public WeatherDataAccess.Model.InstantDetails CurrentWeatherDetails
         {
@@ -60,6 +63,7 @@ namespace YetAnotherWeatherApp.ViewModels
         
         public HomeViewModel()
         {
+            weatherService = DependencyService.Get<IWeatherService>();
             OpenWebCommand = new Command(async () => await Shell.Current.GoToAsync($"//{nameof(SettingsView)}"));
             ShowDayPicker = new Command(OnShowDayPicker);
             HideDayPicker = new Command(OnHideDayPicker);
@@ -83,7 +87,7 @@ namespace YetAnotherWeatherApp.ViewModels
         {
             var location = await Xamarin.Essentials.Geolocation.GetLastKnownLocationAsync();
 
-            var weatherData = await new WeatherDataAccess.Data.HTTPACCESS().GetWeatherFromLocationAsync(location.Latitude, location.Longitude);
+            var weatherData = await weatherService.GetWeatherFromLocationAsync(location.Latitude, location.Longitude);
 
             if (weatherData != null)
             {

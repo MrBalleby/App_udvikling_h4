@@ -2,7 +2,6 @@
 using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +10,7 @@ using WeatherDataAccess.Model;
 
 namespace WeatherDataAccess.Data
 {
-    public class HTTPACCESS : IHTTPACCESS
+    public class WeatherService : IWeatherService
     {
         private static string _baseUrl = @"https://api.met.no/weatherapi/locationforecast/2.0/compact";
 

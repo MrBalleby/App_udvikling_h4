@@ -1,4 +1,5 @@
 ﻿using System;
+using WeatherDataAccess.Data;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using YetAnotherWeatherApp.Services;
@@ -14,6 +15,7 @@ namespace YetAnotherWeatherApp
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
+            DependencyService.Register<IWeatherService, WeatherService>();
             MainPage = new AppShell();
         }
 
