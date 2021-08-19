@@ -7,6 +7,7 @@
              x:Class="YetAnotherWeatherApp.Views.SettingsView"
              Shell.NavBarIsVisible="True"
              Shell.TabBarIsVisible="False">
+    <!--Dummy Page For Settings-->
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
             <Button VerticalOptions="Center" Text="Hjem" Command="{Binding HomeCommand}"/>

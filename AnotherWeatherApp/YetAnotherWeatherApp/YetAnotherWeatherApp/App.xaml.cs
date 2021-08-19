@@ -21,6 +21,7 @@ namespace YetAnotherWeatherApp
             MainPage = new AppShell();
         }
 
+        //Application Actions - Not imlemented
         protected override async void OnStart()
         {
             try
@@ -43,17 +44,24 @@ namespace YetAnotherWeatherApp
         {
         }
 
-        void AppActions_OnAppAction(object sender, AppActionEventArgs e)
+        void AppActions_OnAppAction(object sender, AppActionEventArgs e) //Ends in exception and does nothing
         {
-            if (Application.Current != this && Application.Current is App app)
+            try
             {
-                AppActions.OnAppAction -= app.AppActions_OnAppAction;
-                return;
+                if (Application.Current != this && Application.Current is App app)
+                {
+                    AppActions.OnAppAction -= app.AppActions_OnAppAction;
+                    return;
+                }
+                MainThread.BeginInvokeOnMainThread(async () =>
+                {
+                    await Shell.Current.GoToAsync($"//{e.AppAction.Id}");
+                });
             }
-            MainThread.BeginInvokeOnMainThread(async () =>
+            catch (Exception)
             {
-                await Shell.Current.GoToAsync($"//{e.AppAction.Id}");
-            });
+
+            }
         }
 
     }

@@ -25,6 +25,7 @@ namespace YetAnotherWeatherApp.Views
 			base.OnAppearing();
         }
 
+		//Sets a blank drawing list
         protected override void OnAppearing()
         {
             if (paths != new List<SKPath>())
@@ -33,6 +34,7 @@ namespace YetAnotherWeatherApp.Views
             }
         }
 
+		//OnPaint event
 		private void OnPainting(object sender, SKPaintSurfaceEventArgs e)
 		{
 			var surface = e.Surface;
@@ -48,6 +50,7 @@ namespace YetAnotherWeatherApp.Views
 			};
 			canvas.DrawText("Tegneblokken", 60, 60, textPaint);
 
+			//Draws the appering line on the canvas, from the list
 			var touchPathStroke = new SKPaint
 			{
 				IsAntialias = true,
@@ -64,7 +67,7 @@ namespace YetAnotherWeatherApp.Views
 				canvas.DrawPath(touchPath, touchPathStroke);
 			}
 		}
-
+		//Register touch form user, and saves the coordinates to the list paths
 		private void OnTouch(object sender, SKTouchEventArgs e)
 		{
 			try

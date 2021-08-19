@@ -24,6 +24,7 @@ namespace YetAnotherWeatherApp.Views
             citylist.IsVisible = false;
         }
 
+        //Runs when the device starts, or resume the application
         protected override void OnAppearing() 
         {
             DisplayOrientation orientation = DeviceDisplay.MainDisplayInfo.Orientation;
