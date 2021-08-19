@@ -24,16 +24,19 @@ namespace YetAnotherWeatherApp.Views
             citylist.IsVisible = false;
         }
 
+        //Runs when the device starts, or resume the application
         protected override void OnAppearing() 
         {
             DisplayOrientation orientation = DeviceDisplay.MainDisplayInfo.Orientation;
             if (orientation == Xamarin.Essentials.DisplayOrientation.Landscape)
             {
                 outerstack.Orientation = StackOrientation.Horizontal;
+                innerframe.BackgroundColor = Color.Black;
             }
             else
             {
                 outerstack.Orientation = StackOrientation.Vertical;
+                innerframe.BackgroundColor = Color.Transparent;
             }
     }
 

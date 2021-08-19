@@ -33,7 +33,7 @@
                             <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Image BackgroundColor="Transparent" Source="{local:ImageResource YetAnotherWeatherApp.Images.Landscape1.JPG}" Aspect="AspectFill" Grid.RowSpan="5"></Image>
-                        <Frame BackgroundColor="Transparent" VerticalOptions="Start" Grid.Column="0" Grid.Row="1" CornerRadius="10"  Padding="10">
+                        <Frame x:Name="innerframe" BackgroundColor="Transparent" VerticalOptions="Start" Grid.Column="0" Grid.Row="1" CornerRadius="10"  Padding="10">
                             <StackLayout>
                                 <Grid>
                                     <Grid.RowDefinitions>

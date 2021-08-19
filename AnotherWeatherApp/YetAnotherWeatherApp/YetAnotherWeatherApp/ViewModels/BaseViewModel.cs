@@ -6,6 +6,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.CommunityToolkit.ObjectModel;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using YetAnotherWeatherApp.Models;
 using YetAnotherWeatherApp.Services;
@@ -16,6 +17,7 @@ namespace YetAnotherWeatherApp.ViewModels
     {
         public BaseViewModel()
         {
+            
             LoadWeatherIconList = new AsyncCommand(OnLoadWeatherIconList);
         }
 

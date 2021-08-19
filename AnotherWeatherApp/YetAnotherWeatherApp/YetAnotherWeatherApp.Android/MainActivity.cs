@@ -8,9 +8,25 @@ using DeviceOrientation.Forms.Plugin.Droid;
 
 namespace YetAnotherWeatherApp.Droid
 {
-    [Activity(Label = "YetAnotherWeatherApp", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.FullUser)]
+    [IntentFilter(
+        new[] { Xamarin.Essentials.Platform.Intent.ActionAppAction },
+        Categories = new[] { Android.Content.Intent.CategoryDefault })]
+    [Activity(Label = "WEATHER", Icon = "@drawable/applogo", Theme = "@style/MainTheme", MainLauncher = true, RoundIcon = "@drawable/applogo", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.FullUser)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        protected override void OnResume()
+        {
+            base.OnResume();
+
+            Xamarin.Essentials.Platform.OnResume(this);
+        }
+
+        protected override void OnNewIntent(Android.Content.Intent intent)
+        {
+            base.OnNewIntent(intent);
+
+            Xamarin.Essentials.Platform.OnNewIntent(intent);
+        }
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
