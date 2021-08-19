@@ -8,9 +8,9 @@ namespace WeatherDataAccessConsole
     {
         static async Task Main(string[] args)
         {
-            var httpAccess = new WeatherDataAccess.Data.HTTPACCESS();
+            var weatherService = new WeatherDataAccess.Data.WeatherService();
 
-            var response = await httpAccess.GetWeatherFromLocationAsync(56.4520, 9.3963);
+            var response = await weatherService.GetWeatherFromLocationAsync(56.4520, 9.3963);
 
             Console.WriteLine("Hello World!");
         }

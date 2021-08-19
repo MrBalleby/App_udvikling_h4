@@ -18,6 +18,7 @@ namespace YetAnotherWeatherApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DailyWeatherSummaryView : ContentView
     {
+        private readonly IWeatherService weatherService;
         private static Random _random = new Random();
 
         private static string[] weathers = new string[]
@@ -33,6 +34,9 @@ namespace YetAnotherWeatherApp.Views
         public DailyWeatherSummaryView()
         {
             InitializeComponent();
+
+            weatherService = DependencyService.Get<IWeatherService>();
+
             DateWeatherSummaryView.ItemsSource = dailyWeatherSummaries;
 
             LoadWeatherIconList = new AsyncCommand(OnLoadWeatherIconList);
@@ -47,7 +51,7 @@ namespace YetAnotherWeatherApp.Views
 
         async Task OnGetDataFromApi()
         {
-            var results = await new HTTPACCESS().GetWeatherFromLocationAsync(56.4520, 9.3963);
+            var results = await weatherService.GetWeatherFromLocationAsync(56.4520, 9.3963);
 
             var midDayResults = results.Properties.Timeseries.Where(ts => ts.Time.TimeOfDay == new TimeSpan(12, 0, 0)).ToList();
             if (weatherIconList == null || weatherIconList.Count == 0)
